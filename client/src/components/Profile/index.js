@@ -1,15 +1,96 @@
-import React from 'react';
-
-const Profile = ({ profileData }) => {
+import React, { useEffect, useState } from "react";
+import "./style.scss";
+import PropTypes from "prop-types";
+/*
+const Event = ({ eventDetails }) => {
     return (
         <div>
-            {/* Display Profile Data */}
-            <h2>{profileData.name}</h2>
-            <img src={profileData.imageURL} alt={profileData.name} />
-            <p>{profileData.description}</p>
+            //Display Event Details 
+            <h3>{eventDetails.name}</h3>
+            <p>{eventDetails.date}</p>
+            <p>{eventDetails.venue}</p>
         </div>
     );
 }
 
-export default Profile;
+export default Event;
+*/
 
+export default function Profile({
+    data: {
+      name="none",
+      bio = "",
+      location = "",
+      openHour="",
+      menu="",
+      review="",
+      technologies = [],
+      creationDate,
+      onViewChange,
+    },
+  }) {
+    const [isBioVisible, setIsBioVisible] = useState(true);
+  
+    const handleBioVisibility = () => {
+      setIsBioVisible(!isBioVisible);
+      if (typeof onViewChange === "function") {
+        onViewChange(!isBioVisible);
+      }
+    };
+  
+    return (
+      <div className="ProfileCard">
+        <div className="avatar">
+          {/*<i className="photo" />*/}
+          <h2>{name}</h2>
+          
+        </div>
+        <div className={`details ${isBioVisible ? "bio" : "technologies"}`}>
+{isBioVisible ? (
+            <>
+              <h2>Follow</h2>
+              <div>
+                <p>Location: {location}</p>
+                <p>Open Hour: {openHour}</p>
+                <p>See Our Menu: {menu}</p>
+                <p>See Our Review: {review}</p>
+              </div>
+              <p>{bio !== "" ? bio : "No bio provided yet"}</p>
+              <div>
+                <button onClick={handleBioVisibility}>View Skills</button>
+                <p className="joined">Joined: {creationDate}</p>
+              </div>
+            </>
+          ) : (
+            <>
+              <h3>Technologies</h3>
+              {technologies.length > 0 && (
+                <ul>
+                  {technologies.map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
+                </ul>
+              )}
+              <div>
+                <button onClick={handleBioVisibility}>View Bio</button>
+                {!!location && <p className="location">Location: {location}</p>}
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+    );
+  }
+
+  Event.propTypes = {
+    data: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      posts: PropTypes.number.isRequired,
+      isOnline: PropTypes.bool,
+      bio: PropTypes.string,
+      location: PropTypes.string,
+      technologies: PropTypes.arrayOf(PropTypes.string),
+      creationDate: PropTypes.string.isRequired,
+      onViewChange: PropTypes.func,
+    }).isRequired,
+  };

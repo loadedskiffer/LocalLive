@@ -18,6 +18,7 @@ function App() {
                     <nav>
                         <Link to="/">Home</Link>
                         <Link to="/venue">Venue Profile</Link>
+                        <Link to="/event">Event Profile</Link>
                         <Link to="/login">Login</Link>
                         <Link to="/signup">Signup</Link>
                     </nav>
@@ -27,6 +28,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/venue" element={<VenueProfile />} />
+                    <Route path="/event" element={<Event />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/signup" element={<Signup />} />
                     <Route path="/signup/audience" element={<AudienceSignup />} />
