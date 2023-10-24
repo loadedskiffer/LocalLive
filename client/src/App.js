@@ -4,7 +4,7 @@ import Home from './pages/Home/index.js';
 import Login from './components/Login/index.js';
 import Signup from './components/Signup/index.js';
 import VenueProfile from './pages/VenueProfile/index.js';
-import Event from './components/Event/index.js';
+import Event from './pages/EventProfile/index.js';
 import './App.css';
 
 function App() {

@@ -45,38 +45,20 @@ export default function Profile({
           <h2>{name}</h2>
           
         </div>
-        <div className={`details ${isBioVisible ? "bio" : "technologies"}`}>
-{isBioVisible ? (
+        <div className={`details `}>
             <>
               <h2>Follow</h2>
               <div>
                 <p>Location: {location}</p>
                 <p>Open Hour: {openHour}</p>
-                <p>See Our Menu: {menu}</p>
-                <p>See Our Review: {review}</p>
+                <p>See Our Menu{menu}</p>
+                <p>See Our Review{review}</p>
               </div>
-              <p>{bio !== "" ? bio : "No bio provided yet"}</p>
               <div>
-                <button onClick={handleBioVisibility}>View Skills</button>
-                <p className="joined">Joined: {creationDate}</p>
+                <p>{bio !== "" ? bio : "No description provided yet"}</p>
               </div>
+              
             </>
-          ) : (
-            <>
-              <h3>Technologies</h3>
-              {technologies.length > 0 && (
-                <ul>
-                  {technologies.map((item, index) => (
-                    <li key={index}>{item}</li>
-                  ))}
-                </ul>
-              )}
-              <div>
-                <button onClick={handleBioVisibility}>View Bio</button>
-                {!!location && <p className="location">Location: {location}</p>}
-              </div>
-            </>
-          )}
         </div>
       </div>
     );

@@ -1,8 +1,7 @@
 import React from 'react';
-import Profile from '../../components/Profile/index.js';
 import Event from '../../components/Event/index.js';
 
-const VenueProfile = () => {
+const EventProfile = () => {
     // Sample Data, this would ideally come from an API
     const venueData = {
         name: "Awesome Venue",
@@ -12,7 +11,7 @@ const VenueProfile = () => {
 
     return (
         <div>
-            <Profile
+            <Event
                 data={{
                 name: "Slidin Dirty",
                 bio:
@@ -38,4 +37,4 @@ const VenueProfile = () => {
     );
 }
 
-export default VenueProfile;
+export default EventProfile;

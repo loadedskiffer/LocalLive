@@ -40,36 +40,18 @@ export default function Event({
     return (
       <div className="ProfileCard">
         <div className="avatar">
-          <h2>{name}</h2>
-          <i className="photo" />
-          <span>{posts} posts</span>
+          <h2>View Event</h2>
+          
         </div>
-        <div className={`details ${isBioVisible ? "bio" : "technologies"}`}>
-          {isBioVisible ? (
-            <>
-              <h3>Bio</h3>
-              <p>{bio !== "" ? bio : "No bio provided yet"}</p>
-              <div>
-                <button onClick={handleBioVisibility}>View Skills</button>
-                <p className="joined">Joined: {creationDate}</p>
-              </div>
-            </>
-          ) : (
-            <>
-              <h3>Technologies</h3>
-              {technologies.length > 0 && (
-                <ul>
-                  {technologies.map((item, index) => (
-                    <li key={index}>{item}</li>
-                  ))}
-                </ul>
-              )}
-              <div>
-                <button onClick={handleBioVisibility}>View Bio</button>
-                {!!location && <p className="location">Location: {location}</p>}
-              </div>
-            </>
-          )}
+        <div className={`details`}>
+          <>
+            <h3>{name}</h3>
+            <h3>Artist</h3>
+            <p>Date</p>
+            <p>Time</p>
+            <p>Address</p>
+            <p>RSVP</p>            
+          </>
         </div>
       </div>
     );
