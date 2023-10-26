@@ -1,13 +1,10 @@
 const express = require('express')
-const {MongoClient} = require('mongodb');
-const uri = 'mongodb+srv://loadedskiffer:Miles1010@cluster0.smelsmc.mongodb.net/?retryWrites=true&w=majority';
-const client = new MongoClient(uri);
 const bodyParser = require('body-parser');
 const app = express()
 const port = 5000
 const cors = require('cors');
+const db = require('./database')
 app.use(cors({
-
     origin: 'http://localhost:5000'
 }))
 
@@ -17,21 +14,21 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-app.get("/", async (req, res) => {
-    try{
-        await client.connect();
-        const db = client.db("LocalLive");
-        const collection = db.collection("Users");
-        console.log(collection)
-        res.status(200).json({ error: "Connected to database!" }); 
-    }catch (err) {
-        console.error(err);
-        res.status(500).json({ error: "An error occurred while connecting to the database" }); 
-    }
-    finally {
-        await client.close();
-    }    
-    
-})
 
-app.listen(port, () => {console.log(`server started on ${port}`)})
+// imports the API from the routes/api folder
+const artist = require('./routes/artist')
+const audience = require('./routes/audience')
+const venue = require('./routes/venue')
+const event = require('./routes/event')
+
+
+// creates a route where we can interact with our API
+//this means if a user accesses http://localhost:5000/artist it will access the routes in routes/artist
+app.use('/audience', audience)
+app.use('/artist', artist)
+app.use('/venue', venue)
+app.use('/event', event)
+
+db.connect(() => {
+    app.listen(port, () => {console.log(`server started on ${port}`)})
+});
