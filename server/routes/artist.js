@@ -2,16 +2,21 @@ const express = require('express')
 const router = express.Router()
 
 //this won't be here yet on this branch but act like it in
-const Book = require('../../models/Artist')
+//const Artist = require('../../models/Artist')
+var db = require('../database');
 
 router.get('/test', (req, res) => res.json({msg: 'backend works'}))
 
+//for now this just gets all artists, using to test if we are communicating with db properly
 // @route GET /artist
 // @desc Get an artist by their id
 router.get('/id', (req, res) => {
-  Artist.find()
-    .then(info => res.json(info))
-    .catch(err => res.status(404).json({msg: 'no artist found'}))
+  console.log("hit route")
+  console.log(db)
+  db.get().collection('Artists').find({}).toArray()
+    .then((artists) => {
+    res.json(artists)
+  });
 })
 
 // @route POST /artist
