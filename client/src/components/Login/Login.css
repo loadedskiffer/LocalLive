@@ -1,0 +1,60 @@
+.login-container {
+    width: 80%;
+    max-width: 600px;
+    margin: 2% auto;
+    padding: 40px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.login-form {
+    margin-top: 30px;
+}
+
+.input-field {
+    margin-bottom: 25px;
+}
+
+.input-field label {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.input-field input {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.submit-field {
+    margin-top: 25px;
+}
+
+.submit-field button {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+}
+
+.login-footer {
+    margin-top: 25px;
+}
+
+.login-footer a {
+    color: #007BFF;
+    text-decoration: none;
+    margin: 0 12px;
+    font-size: 1.1em;
+}
+
+.login-footer a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,14 @@
+.welcome-container {
+    text-align: center;
+    padding: 50px;
+}
+
+.welcome-buttons {
+    margin-top: 20px;
+}
+
+.welcome-buttons button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+}

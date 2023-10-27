@@ -2,7 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './components/Login';
-import Signup from './components/Signup';
+import AudienceSignup from './components/Signup/Audience/AudienceSignup';
+import VendorSignup from './components/Signup/Vendor/VendorSignup';
+import Signup from './components/Signup/Signup.jsx';
 import VenueProfile from './pages/VenueProfile';
 import './App.css';
 
@@ -27,6 +29,8 @@ function App() {
                     <Route path="/venue" element={<VenueProfile />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/signup" element={<Signup />} />
+                    <Route path="/signup/audience" element={<AudienceSignup />} />
+                    <Route path="/signup/vendor" element={<VendorSignup />} />
                 </Routes>
             </div>
         </Router>

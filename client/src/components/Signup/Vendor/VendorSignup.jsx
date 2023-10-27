@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import './VendorSignup.css';
 
-function Signup() {
+function VendorSignup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -13,15 +14,16 @@ function Signup() {
       return;
     }
 
-    // Call  backend API or authentication service 
+    // Call backend API or authentication service
     console.log(`Email: ${email}, Password: ${password}`);
   };
 
   return (
-    <div>
-      <h2>Signup</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
+    <div className="vendor-signup-container">
+      <h2>Vendor Sign Up</h2>
+      <p>Join as a vendor and showcase your talents</p>
+      <form onSubmit={handleSubmit} className="vendor-signup-form">
+        <div className="input-field">
           <label>Email:</label>
           <input
             type="email"
@@ -30,7 +32,7 @@ function Signup() {
             required
           />
         </div>
-        <div>
+        <div className="input-field">
           <label>Password:</label>
           <input
             type="password"
@@ -39,7 +41,7 @@ function Signup() {
             required
           />
         </div>
-        <div>
+        <div className="input-field">
           <label>Confirm Password:</label>
           <input
             type="password"
@@ -48,12 +50,12 @@ function Signup() {
             required
           />
         </div>
-        <div>
-          <button type="submit">Signup</button>
+        <div className="submit-field">
+          <button type="submit">Sign Up as Vendor</button>
         </div>
       </form>
     </div>
   );
 }
 
-export default Signup;
+export default VendorSignup;
