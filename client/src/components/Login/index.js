@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Login.css'; 
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -6,15 +7,16 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Call  backend API or authentication service 
+    // Call backend API or authentication service 
     console.log(`Email: ${email}, Password: ${password}`);
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
+    <div className="login-container">
+      <h2>Welcome Back!</h2>
+      <p>Log in to continue to Local Live</p>
+      <form onSubmit={handleSubmit} className="login-form">
+        <div className="input-field">
           <label>Email:</label>
           <input
             type="email"
@@ -23,7 +25,7 @@ function Login() {
             required
           />
         </div>
-        <div>
+        <div className="input-field">
           <label>Password:</label>
           <input
             type="password"
@@ -32,10 +34,14 @@ function Login() {
             required
           />
         </div>
-        <div>
+        <div className="submit-field">
           <button type="submit">Login</button>
         </div>
       </form>
+      <div className="login-footer">
+        <a href="#">Forgot Password?</a>
+        {/* <a href="#">Sign Up</a> */} {/* Commented out the Sign Up link */}
+      </div>
     </div>
   );
 }

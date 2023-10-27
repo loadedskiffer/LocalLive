@@ -1,0 +1,38 @@
+.signup-selection-container {
+    width: 142.5%; 
+    max-width: 750px; 
+    margin: 5% auto; 
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+
+
+
+.signup-options {
+    margin-top: 20px;
+}
+
+.vendor-signup-btn, .audience-signup-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+.vendor-signup-btn {
+    background-color: #28a745; 
+}
+
+.audience-signup-btn {
+    background-color: #17a2b8; 
+}
