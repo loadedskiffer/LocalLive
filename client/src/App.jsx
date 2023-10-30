@@ -1,3 +1,4 @@
+// Importing required modules and components
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/Home';
@@ -8,8 +9,11 @@ import Signup from './components/Signup/Signup.jsx';
 import VenueProfile from './pages/VenueProfile';
 import './App.css';
 
+// Main App component that serves as the entry point for the application
+
 function App() {
     return (
+                // Using React Router for navigation
         <Router>
             <div className="App">
                 {/* Navbar */}
@@ -22,7 +26,8 @@ function App() {
                         <Link to="/signup">Signup</Link>
                     </nav>
                 </div>
-
+                
+                    // Defining the main routes for the application
                 {/* Routes */}
                 <Routes>
                     <Route path="/" element={<Home />} />
@@ -36,5 +41,6 @@ function App() {
         </Router>
     );
 }
+// Exporting the App component to be used elsewhere in the application
 
 export default App;
