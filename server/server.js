@@ -21,6 +21,9 @@ const audience = require('./routes/audience')
 const venue = require('./routes/venue')
 const event = require('./routes/event')
 
+app.get('/test', async (req, res) => {
+    res.status(200).json({ test: 'Success' })
+})
 
 // creates a route where we can interact with our API
 //this means if a user accesses http://localhost:5000/artist it will access the routes in routes/artist
