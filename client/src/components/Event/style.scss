@@ -1,0 +1,130 @@
+.ProfileCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    width: 440px;
+    height: 620px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px -8px rgba(0, 0, 0, 0.4);
+
+    .avatar {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        flex-shrink: 0;
+        width: 100%;
+        background: linear-gradient(#de685e, #ee786e);
+
+        .photo {
+            width: 90px;
+            height: 90px;
+            background: url("https://avatars.dicebear.com/4.5/api/avataaars/.svg?eyebrow[]=up&mouth[]=smile")
+                0 0 no-repeat;
+            background-color: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            margin: 0;
+            padding: 0 12px;
+            font-size: 24px;
+            line-height: 26px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #fff;
+            background-color: #bf5a51;
+            border-radius: 13px;
+        }
+
+        span {
+            padding: 0 10px;
+            font-size: 14px;
+            line-height: 22px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #fff;
+            background-color: #bf5a51;
+            border-radius: 11px;
+        }
+
+    }
+
+    .details {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-grow: 1;
+        padding: 15px;
+
+        h3 {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            line-height: 26px;
+            font-weight: 600;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        > p {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            line-height: 20px;
+            max-height: 80px;   // 4 rows
+            overflow: hidden;
+        }
+
+        ul {
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            max-height: 80px;   // 4 rows
+            overflow: hidden;
+
+            li {
+                font-size: 16px;
+                line-height: 20px;
+            }
+        }
+
+        > div {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            p {
+                margin: 0;
+                padding: 0;
+                font-size: 14px;
+                line-height: 20px;
+                text-align: right;
+            }
+        }
+
+        button {
+            position: relative;
+            padding: 0;
+            font-family: inherit;
+            font-size: 14px;
+            line-height: 20px;
+            border: none;
+            background-color: transparent;
+            outline: none;
+            text-decoration: underline;
+            cursor: pointer;
+
+            &:after {
+                content: "⇛";
+                position: absolute;
+                right: -15px;
+            }
+        }
+    }
+}
+  

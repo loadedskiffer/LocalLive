@@ -7,6 +7,7 @@ import AudienceSignup from './components/Signup/Audience/AudienceSignup';
 import VendorSignup from './components/Signup/Vendor/VendorSignup';
 import Signup from './components/Signup/Signup.jsx';
 import VenueProfile from './pages/VenueProfile';
+import EventProfile from './pages/EventProfile';
 import './App.css';
 
 // Main App component that serves as the entry point for the application
@@ -22,6 +23,7 @@ function App() {
                     <nav>
                         <Link to="/">Home</Link>
                         <Link to="/venue">Venue Profile</Link>
+                        <Link to="/event">Event Profile</Link>
                         <Link to="/login">Login</Link>
                         <Link to="/signup">Signup</Link>
                     </nav>
@@ -32,6 +34,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/venue" element={<VenueProfile />} />
+                    <Route path="/event" element={<EventProfile />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/signup" element={<Signup />} />
                     <Route path="/signup/audience" element={<AudienceSignup />} />

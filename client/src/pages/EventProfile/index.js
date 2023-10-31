@@ -1,14 +1,9 @@
 import React from 'react';
-import Profile from '../../components/Profile/index.js';
 import Event from '../../components/Event/index.js';
+import Profile from '../../components/Profile/index.js';
 
-const VenueProfile = () => {
+const EventProfile = () => {
     // Sample Data, this would ideally come from an API
-    const venueData = {
-        name: "Awesome Venue",
-        imageURL: "/path/to/image.jpg", // Placeholder
-        description: "A great venue for live music events."
-    };
 
     return (
         <div>
@@ -38,4 +33,4 @@ const VenueProfile = () => {
     );
 }
 
-export default VenueProfile;
+export default EventProfile;
