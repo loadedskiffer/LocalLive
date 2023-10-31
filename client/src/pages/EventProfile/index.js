@@ -1,17 +1,13 @@
 import React from 'react';
 import Event from '../../components/Event/index.js';
+import Profile from '../../components/Profile/index.js';
 
 const EventProfile = () => {
     // Sample Data, this would ideally come from an API
-    const venueData = {
-        name: "Awesome Venue",
-        imageURL: "/path/to/image.jpg", // Placeholder
-        description: "A great venue for live music events."
-    };
 
     return (
         <div>
-            <Event
+            <Profile
                 data={{
                 name: "Slidin Dirty",
                 bio:

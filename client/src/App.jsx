@@ -6,6 +6,7 @@ import AudienceSignup from './components/Signup/Audience/AudienceSignup';
 import VendorSignup from './components/Signup/Vendor/VendorSignup';
 import Signup from './components/Signup/Signup.jsx';
 import VenueProfile from './pages/VenueProfile';
+import EventProfile from './pages/EventProfile';
 import './App.css';
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/venue" element={<VenueProfile />} />
-                    <Route path="/event" element={<Event />} />
+                    <Route path="/event" element={<EventProfile />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/signup" element={<Signup />} />
                     <Route path="/signup/audience" element={<AudienceSignup />} />
