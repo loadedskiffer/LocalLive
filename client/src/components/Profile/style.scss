@@ -1,3 +1,11 @@
+.PageContainer {
+    width: 80%;
+    max-width: 850px;
+    margin: 2% auto;
+    padding: 40px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
 .ProfileCard {
     display: flex;
     flex-direction: row;
