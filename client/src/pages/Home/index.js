@@ -1,5 +1,5 @@
 import React from 'react';
-import Map from '../../components/Map/index.js';
+import Map from '../../components/Map/map.js';
 import MyList from '../../components/List/index.js';
 const Home = () => {
     return (
