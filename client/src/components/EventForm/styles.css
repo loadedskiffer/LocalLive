@@ -1,0 +1,44 @@
+/* styles.css */
+.PageContainer{
+    align-items: center;
+}
+
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    align-items:flex-start;
+  }
+  
+  input {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  button {
+    
+    display: block;
+    width: 50%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #ee786e;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    margin-bottom: 5px;
+    font-size: 1.2em;
+  }
+  

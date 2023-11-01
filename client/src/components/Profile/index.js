@@ -39,26 +39,28 @@ export default function Profile({
     };
   
     return (
-      <div className="ProfileCard">
-        <div className="avatar">
-          {/*<i className="photo" />*/}
-          <h2>{name}</h2>
-          
-        </div>
-        <div className={`details `}>
-            <>
-              <h2>Follow</h2>
-              <div>
-                <p>Location: {location}</p>
-                <p>Open Hour: {openHour}</p>
-                <p>See Our Menu{menu}</p>
-                <p>See Our Review{review}</p>
-              </div>
-              <div>
-                <p>{bio !== "" ? bio : "No description provided yet"}</p>
-              </div>
-              
-            </>
+      <div className="PageContainer">
+        <div className="ProfileCard">
+          <div className="avatar">
+            {/*<i className="photo" />*/}
+            <h2>{name}</h2>
+            
+          </div>
+          <div className={`details `}>
+              <>
+                <h2>Follow</h2>
+                <div>
+                  <p>Location: {location}</p>
+                  <p>Open Hour: {openHour}</p>
+                  <p>See Our Menu{menu}</p>
+                  <p>See Our Review{review}</p>
+                </div>
+                <div>
+                  <p>{bio !== "" ? bio : "No description provided yet"}</p>
+                </div>
+                
+              </>
+          </div>
         </div>
       </div>
     );

@@ -7,25 +7,14 @@ const EventProfile = () => {
 
     return (
         <div>
-            <Profile
+            <Event
                 data={{
                 name: "Slidin Dirty",
-                bio:
-                    "This is a short description of our venue",
-                location: "2341 River Street, Troy NY, 12180",
-                openHour:"6 pm - 12 am",
-                menu:"",
-                review:"",
-                technologies: [
-                    "Javascript",
-                    "React",
-                    "Redux",
-                    "Vue",
-                    "Webpack",
-                    "NodeJs",
-                    "Webpack",
-                ],
-                creationDate: "01.01.2021",
+                artist:"Mile's Band",
+                address: "2341 River Street, Troy NY, 12180",
+                date:"Nov 12,2023",
+                time:"20:30",
+                
                 }}
             />
             {/* More content like upcoming events can be added here */}

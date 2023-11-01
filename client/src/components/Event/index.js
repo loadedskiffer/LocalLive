@@ -19,12 +19,10 @@ export default Event;
 export default function Event({
     data: {
       name="none",
-      posts,
-      isOnline = false,
-      bio = "",
-      location = "",
-      technologies = [],
-      creationDate,
+      artist="none",
+      date ="",
+      time ="",
+      address ="",
       onViewChange,
     },
   }) {
@@ -38,20 +36,22 @@ export default function Event({
     };
   
     return (
-      <div className="ProfileCard">
-        <div className="avatar">
-          <h2>View Event</h2>
-          
-        </div>
-        <div className={`details`}>
-          <>
-            <h3>{name}</h3>
-            <h3>Artist</h3>
-            <p>Date</p>
-            <p>Time</p>
-            <p>Address</p>
-            <p>RSVP</p>            
-          </>
+      <div className="PageContainer">
+        <div className="ProfileCard">
+          <div className="avatar">
+            <h2>{name}</h2>
+          </div>
+          <div className={`details`}>
+            <>
+              <div>
+                <h3>Artist:{artist}</h3>
+                <p>{date}</p>
+                <p>{time}</p>
+                <p>{address}</p>
+                <p>RSVP</p>    
+              </div>        
+            </>
+          </div>
         </div>
       </div>
     );
