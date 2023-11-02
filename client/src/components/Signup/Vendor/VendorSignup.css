@@ -1,19 +1,18 @@
-/* Vendor Signup Form */
 .vendor-signup-container {
     width: 80%;
     max-width: 600px;
-    margin: 0 auto; 
+    margin: 0 auto;
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
     text-align: center;
 }
 
 .vendor-signup-container h2 {
-    font-size: 28px; 
+    font-size: 28px;
 }
 
 .vendor-signup-container p {
-    font-size: 18px; 
+    font-size: 18px;
     color: #777;
 }
 
@@ -21,24 +20,38 @@
     margin-top: 20px;
 }
 
+.vendor-signup-form .input-field {
+    margin-bottom: 16px;
+}
+
 .vendor-signup-form label {
     display: block;
     margin-bottom: 10px;
-    font-size: 18px; 
+    font-size: 18px;
 }
 
 .vendor-signup-form input {
     width: 100%;
-    padding: 12px; 
-    font-size: 18px; 
+    padding: 12px;
+    font-size: 18px;
     border: 1px solid #ddd;
     border-radius: 4px;
 }
 
+.address-field {
+    display: flex;
+    justify-content: space-between;
+    gap: 2%; /* Adjust the gap as per your requirement */
+}
+
+.address-field input {
+    width: 48%; /* Adjust this width if the gap is adjusted */
+}
+
 .vendor-signup-form button {
     width: 100%;
-    padding: 12px; 
-    font-size: 18px; 
+    padding: 12px;
+    font-size: 18px;
     border: none;
     border-radius: 4px;
     background-color: #007BFF;
@@ -46,3 +59,14 @@
     cursor: pointer;
     margin-top: 20px;
 }
+
+.vendor-signup-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .venue-name-center {
+    margin: 20px 0; 
+  }
+  

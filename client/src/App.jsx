@@ -1,24 +1,21 @@
-// Importing required modules and components
+// App.jsx
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './components/Login';
 import AudienceSignup from './components/Signup/Audience/AudienceSignup';
 import VendorSignup from './components/Signup/Vendor/VendorSignup';
-import Signup from './components/Signup/Signup.jsx';
+import ArtistSignup from './components/Signup/Artist/ArtistSignup'; 
+import Signup from './components/Signup/Signup';
 import VenueProfile from './pages/VenueProfile';
 import EventProfile from './pages/EventProfile';
 import EventForm from './components/EventForm';
 import './App.css';
 
-// Main App component that serves as the entry point for the application
-
 function App() {
     return (
-                // Using React Router for navigation
         <Router>
             <div className="App">
-                {/* Navbar */}
                 <div className="navbar">
                     <h2>Local Live</h2>
                     <nav>
@@ -29,9 +26,6 @@ function App() {
                         <Link to="/signup">Signup</Link>
                     </nav>
                 </div>
-                
-                    // Defining the main routes for the application
-                {/* Routes */}
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/venue" element={<VenueProfile />} />
@@ -40,11 +34,11 @@ function App() {
                     <Route path="/signup" element={<Signup />} />
                     <Route path="/signup/audience" element={<AudienceSignup />} />
                     <Route path="/signup/vendor" element={<VendorSignup />} />
+                    <Route path="/signup/artist" element={<ArtistSignup />} />
                 </Routes>
             </div>
         </Router>
     );
 }
-// Exporting the App component to be used elsewhere in the application
 
 export default App;

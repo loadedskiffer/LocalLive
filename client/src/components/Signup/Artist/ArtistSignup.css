@@ -1,0 +1,51 @@
+.artist-signup-container {
+    width: 80%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.artist-signup-container h2 {
+    font-size: 28px;
+}
+
+.artist-signup-container p {
+    font-size: 18px;
+    color: #777;
+}
+
+.artist-signup-form {
+    margin-top: 20px;
+}
+
+.artist-signup-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.artist-signup-form input {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.artist-signup-button {
+    background-color: #007BFF; /* Blue color */
+    color: white;
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.artist-signup-button:hover {
+    background-color: #0056b3; /* Slightly darker blue on hover */
+}

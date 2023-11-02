@@ -1,3 +1,4 @@
+// Signup.jsx
 import React from 'react';
 import './Signup.css';
 import { Link } from 'react-router-dom'; 
@@ -10,6 +11,7 @@ function Signup() {
             <div className="signup-options">
                 <Link to="/signup/vendor" className="vendor-signup-btn">Vendor Sign Up</Link>
                 <Link to="/signup/audience" className="audience-signup-btn">Audience Sign Up</Link>
+                <Link to="/signup/artist" className="artist-signup-btn">Artist Sign Up</Link>
             </div>
         </div>
     );
