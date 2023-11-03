@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./style.scss";
 import PropTypes from "prop-types";
+import EventList from '../../components/List/index.js';
 
 /*
 Profile: Show venue information including name, location, open hour, menue, review */
@@ -38,6 +39,10 @@ export default function Profile({
                 
               </>
           </div>
+        </div>
+        <div className="event-list">
+            <h2>Posted Events</h2>
+            <EventList />
         </div>
       </div>
     );

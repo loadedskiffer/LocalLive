@@ -8,12 +8,12 @@
     background-color: #f0f0f0;
     overflow-y: auto;
     padding: 20px;
-  }
+}
   
 .map {
-flex: 2;
-background-color: #ccc;
-/* Add styles for your map here */
+    flex: 2;
+    background-color: #ccc;
+    /* Add styles for your map here */
 }
 
 h1{
