@@ -1,6 +1,7 @@
 /* styles.css */
 .PageContainer{
     align-items: center;
+    background-color: #fff;
 }
 
   
@@ -9,6 +10,7 @@
     flex-direction: column;
     margin-bottom: 10px;
     align-items:flex-start;
+    
   }
   
   input {
