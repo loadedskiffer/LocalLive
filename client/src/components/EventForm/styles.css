@@ -2,6 +2,7 @@
 .PageContainer{
     align-items: center;
     background-color: #fff;
+    height: 100%;
 }
 
   
@@ -10,7 +11,8 @@
     flex-direction: column;
     margin-bottom: 10px;
     align-items:flex-start;
-    
+    justify-content: stretch;
+    height: 600px;
   }
   
   input {
