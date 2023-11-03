@@ -13,12 +13,17 @@ const Audience_User_Schema = new Schema({
         required: true,
         unique: true,
     },
+    phoneNumber: {
+        type: String,
+        match: /^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)\d{4}$/,
+    }, 
     password: {
         type: String,
         required: true,
     },
     createdAt: {
         type: Date,
+        required: true,
         default: Date.now,
     },
 });
