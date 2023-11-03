@@ -1,36 +1,20 @@
 import React from 'react';
 import Profile from '../../components/Profile/index.js';
-import Event from '../../components/Event/index.js';
 
+/* 
+EventProfile: Show venue information*/
 const VenueProfile = () => {
-    // Sample Data, this would ideally come from an API
-    const venueData = {
-        name: "Awesome Venue",
-        imageURL: "/path/to/image.jpg", // Placeholder
-        description: "A great venue for live music events."
-    };
-
     return (
         <div>
             <Profile
-                data={{
+                data={{// Sample Data, this would ideally come from an API
                 name: "Slidin Dirty",
                 bio:
-                    "This is a short description of our venue",
+                    "A captivating urban oasis, nestled in the heart of the city. This venue offers a magical experience for all types of events. As you enter, a world of natural wonder unfolds before you. Lush greenery and vibrant blooms adorn every corner, complemented by the gentle twinkle of fairy lights overhead.",
                 location: "2341 River Street, Troy NY, 12180",
                 openHour:"6 pm - 12 am",
                 menu:"",
                 review:"",
-                technologies: [
-                    "Javascript",
-                    "React",
-                    "Redux",
-                    "Vue",
-                    "Webpack",
-                    "NodeJs",
-                    "Webpack",
-                ],
-                creationDate: "01.01.2021",
                 }}
             />
             {/* More content like upcoming events can be added here */}
