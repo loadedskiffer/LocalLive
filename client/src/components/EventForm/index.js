@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import './styles.css';
 
+/*
+EventForm: Venues can create event post and set event name, date, time, artist, and description
+ */
 const EventForm = ({ addEvent }) => {
   const [eventName, setEventName] = useState('');
   const [date, setDate] = useState('');
@@ -22,7 +25,7 @@ const EventForm = ({ addEvent }) => {
     setTime('');
     setArtist('');
     setDescription('');
-  };
+  };//save form data while submit the form
 
   return (
     <div className='PageContainer'>

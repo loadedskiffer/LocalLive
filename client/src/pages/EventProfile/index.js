@@ -1,10 +1,10 @@
 import React from 'react';
 import Event from '../../components/Event/index.js';
-import Profile from '../../components/Profile/index.js';
 
+/* 
+EventProfile: Show event information*/
 const EventProfile = () => {
     // Sample Data, this would ideally come from an API
-
     return (
         <div>
             <Event
