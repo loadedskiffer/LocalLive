@@ -21,7 +21,7 @@ const Venue_Schema = new Schema({
     zipcode: Number,
     country: String,
     coordinates: { x: Decimal128, y: Decimal128 },
-    hours: String,
+    operating_hours: String,
     phoneNumber: {
         type: String,
         match: /^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)\d{4}$/,

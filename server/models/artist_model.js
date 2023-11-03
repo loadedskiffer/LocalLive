@@ -29,7 +29,7 @@ const Artist_Schema = new Schema({
       instagram: URL,
       youtube: URL,
       tiktok: URL,
-      merchStore: URL,
+      merch_store: URL,
     },
     createdAt: {
       type: Date,
