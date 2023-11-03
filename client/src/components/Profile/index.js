@@ -1,21 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./style.scss";
 import PropTypes from "prop-types";
+
 /*
-const Event = ({ eventDetails }) => {
-    return (
-        <div>
-            //Display Event Details 
-            <h3>{eventDetails.name}</h3>
-            <p>{eventDetails.date}</p>
-            <p>{eventDetails.venue}</p>
-        </div>
-    );
-}
-
-export default Event;
-*/
-
+Profile: Show venue information including name, location, open hour, menue, review */
 export default function Profile({
     data: {
       name="none",
@@ -24,19 +12,8 @@ export default function Profile({
       openHour="",
       menu="",
       review="",
-      technologies = [],
-      creationDate,
-      onViewChange,
     },
   }) {
-    const [isBioVisible, setIsBioVisible] = useState(true);
-  
-    const handleBioVisibility = () => {
-      setIsBioVisible(!isBioVisible);
-      if (typeof onViewChange === "function") {
-        onViewChange(!isBioVisible);
-      }
-    };
   
     return (
       <div className="PageContainer">

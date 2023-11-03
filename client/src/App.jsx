@@ -30,7 +30,7 @@ function App() {
                     </nav>
                 </div>
                 
-                    // Defining the main routes for the application
+                {/* Defining the main routes for the application */} 
                 {/* Routes */}
                 <Routes>
                     <Route path="/" element={<Home />} />
