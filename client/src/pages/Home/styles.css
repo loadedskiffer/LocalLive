@@ -1,0 +1,23 @@
+.page-container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+.event-list {
+    flex: 1;
+    background-color: #f0f0f0;
+    overflow-y: auto;
+    padding: 20px;
+  }
+  
+.map {
+flex: 2;
+background-color: #ccc;
+/* Add styles for your map here */
+}
+
+h1{
+    color:#fff;
+    text-align: center;
+
+}

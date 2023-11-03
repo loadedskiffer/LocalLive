@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { Platform, StyleSheet, Text, View, Button, SectionList, Alert } from "react-native";
 
 //const data_Custom = require('./data.json');
-
-export default class MyList extends Component {
+/*
+EventList: Show event list
+ */
+export default class EventList extends Component {
     /*
     constructor() {
         super();
