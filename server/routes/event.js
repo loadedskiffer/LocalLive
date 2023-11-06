@@ -1,9 +1,17 @@
 const express = require('express')
 const router = express.Router()
-module.exports = router
 
 const Event = require('../models/event_model.js')
 var db = require('../database');
+
+// @route GET /artist
+// @desc Get all artists
+router.get('/all', (req, res) => {
+    db.get().collection('Events').find({}).toArray()
+      .then((events) => {
+      res.json(events)
+    });
+  })
 
 router.post('/create', async (req, res) => {
     //first do some checking to make sure we have everything we need
