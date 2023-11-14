@@ -4,6 +4,19 @@ const router = express.Router()
 const Venue = require('../models/venue_model.js')
 var db = require('../database');
 
+//get names of all venues for search functionality
+router.get('/all', (req, res) => {
+  db.get().collection('Venues').find({}).toArray()
+    .then((events) => {
+    names = []
+    events.forEach(element => {
+      names.push(element['venue_name'])
+    });
+    console.log(names)
+    res.status(200).json(names);
+  });
+})
+
 router.post('/create', async (req, res) => {
     //first do some checking to make sure we have everything we need
     console.log(req.body)

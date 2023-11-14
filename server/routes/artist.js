@@ -10,12 +10,15 @@ var db = require('../database');
 //for now this just gets all artists, using to test if we are communicating with db properly
 // @route GET /artist
 // @desc Get all artists
-router.get('/all_artists', (req, res) => {
-  console.log("hit route")
-  console.log(db)
+router.get('/all', (req, res) => {
   db.get().collection('Artists').find({}).toArray()
-    .then((artists) => {
-    res.json(artists)
+    .then((events) => {
+    names = []
+    events.forEach(element => {
+      names.push(element['artist_name'])
+    });
+    console.log(names)
+    res.status(200).json(names);
   });
 })
 
