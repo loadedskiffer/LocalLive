@@ -3,11 +3,6 @@ const Schema = mongoose.Schema
 
 // Define Artist Schema 
 const Artist_Schema = new Schema({
-    artistID: {
-      type: String,
-      required: true,
-      unique: true,
-    },
     artist_name: {
       type: String,
       required: true,
@@ -23,19 +18,21 @@ const Artist_Schema = new Schema({
       required: true,
     },
     socials: {
-      spotify: URL,
-      apple_music: URL,
-      soundcloud: URL,
-      instagram: URL,
-      youtube: URL,
-      tiktok: URL,
-      merch_store: URL,
+      spotify: String,
+      apple_music: String,
+      soundcloud: String,
+      instagram: String,
+      youtube: String,
+      tiktok: String,
+      merchStore: String,
     },
+    reviews: [String],
     createdAt: {
       type: Date,
       required: true,
       default: Date.now,
-  }
+   }
+   
 })
 
 // Create new artist model using schema

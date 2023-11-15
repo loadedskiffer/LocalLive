@@ -1,42 +1,72 @@
 const express = require('express')
 const router = express.Router()
 
-//this won't be here yet on this branch but act like it in
-//const Artist = require('../../models/Artist')
+const Artist = require('../models/artist_model.js')
 var db = require('../database');
 
-router.get('/test', (req, res) => res.json({msg: 'backend works'}))
-
-//for now this just gets all artists, using to test if we are communicating with db properly
 // @route GET /artist
-// @desc Get an artist by their id
-router.get('/id', (req, res) => {
-  console.log("hit route")
-  console.log(db)
+// @desc Get the names of all artists for search functionality
+router.get('/all', (req, res) => {
   db.get().collection('Artists').find({}).toArray()
-    .then((artists) => {
-    res.json(artists)
+    .then((events) => {
+    names = []
+    events.forEach(element => {
+      names.push(element['artist_name'])
+    });
+    console.log(names)
+    res.status(200).json(names);
   });
 })
 
 // @route POST /artist
 // @desc Create new artist
-router.post('/', (req, res) => {
+router.post('/create', async (req, res) => {
+  //first do some checking to make sure we have everything we need
+  console.log(req.body)
+  // let fields = ['event_name', 'duration', 'date', 'venueID', 'artistID', 'parking_and_admission_info'];
+  // for (var field in fields) { 
+  //     if(!(req.body).hasOwnProperty(fields[field])) {
+  //         console.log(fields[field])
+  //         res.status(400).json({error: "missing required fields" + field});
+  //     }
+  // }
+  //create model
   const newArtist = new Artist({
-    name: req.body.name,
+    artist_name: req.body.artist_name,
     email: req.body.email,
     password: req.body.password,
+    socials: {spotify: req.body.spotify, apple_music: req.body.apple_music}
   })
 
-  newArtist.save().then(info => res.json(info))
+  //put it in database
+  console.log(newArtist)     
+  const result = await db.get().collection('Artists').insertOne(newArtist); 
+  res.status(200).json(result);
 })
 
-// @route DELETE /artist
-// @desc Delete book (public)
-router.delete('/', (req, res) => {
-  Artist.findOneAndRemove({_id: req.body.id}).then(() => {
-    res.json({success: true})
-  })
+// @route POST /artist/reviews/:name
+// @desc add review for an artist
+//:name in the path needs to be the name of the artist
+//req.body must have a review field containing the review
+router.post('/reviews/:name/', async (req, res) => {
+  console.log(req.body)
+  var artist = req.params['name']  
+  var new_reviews = []
+   //get artist from database and save array of current reviews
+  await db.get().collection('Artists').find({artist_name:artist}).toArray()
+    .then((artists) => {
+      //check if they don't already have reviews
+      if (artists[0].reviews) {
+        new_reviews = artists[0].reviews;
+      }
+      //add new review to array
+      new_reviews.push(req.body.review)
+      
+    });
+  //update artist in db
+  const result = db.get().collection('Artists').findOneAndUpdate({artist_name:artist},{$set: {reviews:new_reviews}})
+  res.status(200).json(result);
 })
 
 module.exports = router
+

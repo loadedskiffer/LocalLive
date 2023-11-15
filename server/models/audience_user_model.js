@@ -3,10 +3,13 @@ const Schema = mongoose.Schema;
 
 // Define Audience User schema
 const Audience_User_Schema = new Schema({
-    username: {
+    firstName: {
         type: String,
         required: true,
-        unique: true,
+    },
+    lastName: {
+        type: String,
+        required: true,
     },
     email: {
         type: String,
@@ -29,5 +32,5 @@ const Audience_User_Schema = new Schema({
 });
 
 // Create the User Model from the schema
-const User = mongoose.model('User', Audience_User_Schema);
-module.exports = User;
+const Audience = mongoose.model('Audience', Audience_User_Schema);
+module.exports = Audience;

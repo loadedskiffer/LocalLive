@@ -10,11 +10,11 @@ const Event_Schema = new Schema({
     },
     duration: {type:String, required: true},
     date: {type:Date, required: true},
-    venueID:{
+    venueName:{
         type:String,
         required: true
     },
-    artistID:{
+    artistName:{
         type:String,
         required: true
     },

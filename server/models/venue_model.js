@@ -4,28 +4,24 @@ const Schema = mongoose.Schema;
 
 // Define Venue schema
 const Venue_Schema = new Schema({
-    venueID: {
-        type:String,
-        required: true,
-        unique: true,
-    },
     venue_name: {
         type: String,
         required: true,
     },
-    venue_website: URL,
-    address: String,
+    venue_website: String,
+    street_address: String,
     city: String,
     state: String,
-    county: String,
     zipcode: Number,
     country: String,
-    coordinates: { x: Decimal128, y: Decimal128 },
-    operating_hours: String,
+    xcoor: Decimal128,
+    ycoor: Decimal128,
+    hours: String,
     phoneNumber: {
         type: String,
         match: /^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)\d{4}$/,
-    }, 
+    },
+    reviews: [String], 
     createdAt: {
         type: Date,
         required: true,
@@ -34,5 +30,5 @@ const Venue_Schema = new Schema({
 });
 
 // Create the User Model from the schema
-const venue = mongoose.model('User', Venue_Schema);
+const venue = mongoose.model('Venues', Venue_Schema);
 module.exports = venue;
