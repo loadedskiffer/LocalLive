@@ -9,6 +9,7 @@ const EventForm = ({ addEvent }) => {
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const [artist, setArtist] = useState('');
+  const [venue, setVenue] = useState('');
   const [description, setDescription] = useState('');
 
   const handleSubmit = async (e) => {
@@ -23,9 +24,10 @@ const EventForm = ({ addEvent }) => {
         },
         body: JSON.stringify({
           event_name: eventName,
-          date,
           duration: time, 
-          artistID: artist, 
+          date:date,
+          venueName:venue,
+          artistName:artist,
           parking_and_admission_info: description,
         }),
       });
@@ -46,6 +48,7 @@ const EventForm = ({ addEvent }) => {
     setDate('');
     setTime('');
     setArtist('');
+    setVenue('');
     setDescription('');
   };
   return (
@@ -76,6 +79,15 @@ const EventForm = ({ addEvent }) => {
             type="time"
             value={time}
             onChange={(e) => setTime(e.target.value)}
+            required
+            />
+        </div>
+        <div>
+            <label>Venue </label>
+            <input
+            type="text"
+            value={venue}
+            onChange={(e) => setVenue(e.target.value)}
             required
             />
         </div>
