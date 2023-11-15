@@ -23,7 +23,6 @@ function App() {
                     <h2>Local Live</h2>
                     <nav>
                         <Link to="/">Home</Link>
-                        <Link to="/venue">Venue Profile</Link>
                         <Link to="/event">Create Event</Link>
                         <Link to="/login">Login</Link>
                         <Link to="/signup">Signup</Link>
@@ -34,7 +33,7 @@ function App() {
                 {/* Routes */}
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/venue" element={<VenueProfile />} />
+                    <Route path="/venue/:venueName" component={VenueProfile} />
                     <Route path="/event" element={<EventForm />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/signup" element={<Signup />} />
