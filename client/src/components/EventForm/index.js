@@ -23,13 +23,14 @@ const EventForm = ({ addEvent }) => {
         },
         body: JSON.stringify({
           event_name: eventName,
-          date,
+          venueName: "test",
+          date: date,
           duration: time, 
-          artistID: artist, 
+          artistName: artist, 
           parking_and_admission_info: description,
         }),
       });
-
+      console.log(response)
       if (response.ok) {
         // If the response is successful, update the UI or do other tasks
         const result = await response.json();

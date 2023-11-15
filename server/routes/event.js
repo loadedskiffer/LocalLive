@@ -16,27 +16,32 @@ router.get('/all', (req, res) => {
 router.post('/create', async (req, res) => {
     //first do some checking to make sure we have everything we need
     console.log(req.body)
-    let fields = ['event_name', 'duration', 'date', 'venueID', 'artistID', 'parking_and_admission_info'];
+    let fields = ['event_name', 'duration', 'date', 'venueName', 'artistName', 'parking_and_admission_info'];
+    bad_request = false;
     for (var field in fields) { 
         if(!(req.body).hasOwnProperty(fields[field])) {
-            console.log(fields[field])
-            res.status(400).json({error: "missing required fields" + field});
+            bad_request = true;
         }
     }
-    //create model
-    const newEvent = new Event({
+    if (bad_request) {
+      res.status(400).json({error: "missing required fields"});
+    }
+    else {
+      //create model
+      const newEvent = new Event({
         event_name: req.body.event_name,
         duration: req.body.duration,
         date: req.body.date,
-        venueID: req.body.venueID,
-        artistID: req.body.artistID,
+        venueName: req.body.venueName,
+        artistName: req.body.artistName,
         parking_and_admission_info: req.body.parking_and_admission_info
-    })
+      })
 
-    //put it in database
-    console.log(newEvent)     
-    const result = await db.get().collection('Events').insertOne(newEvent); 
-    res.status(200).json(result);
+      //put it in database
+      console.log(newEvent)     
+      const result = await db.get().collection('Events').insertOne(newEvent); 
+      res.status(200).json(result);
+    }
   })
 
 module.exports = router

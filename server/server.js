@@ -5,7 +5,7 @@ const port = 5000
 const cors = require('cors');
 const db = require('./database')
 app.use(cors({
-    origin: 'http://localhost:5000'
+    origin: 'http://localhost:3000'
 }))
 
 app.use(express.json()); 
