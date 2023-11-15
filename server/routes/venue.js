@@ -4,7 +4,7 @@ const router = express.Router()
 const Venue = require('../models/venue_model.js')
 var db = require('../database');
 
-//get names of all venues for search functionality
+//get names of all venue names for search functionality
 router.get('/all', (req, res) => {
   db.get().collection('Venues').find({}).toArray()
     .then((events) => {
@@ -47,5 +47,29 @@ router.post('/create', async (req, res) => {
     const result = await db.get().collection('Venues').insertOne(newVenue); 
     res.status(200).json(result);
   })
+
+// @route POST /venue/reviews/:name
+// @desc add review for a venue
+//:name in the path needs to be the name of the venue
+//req.body must have a review field containing the review
+router.post('/reviews/:name/', async (req, res) => {
+  console.log(req.body)
+  var venue = req.params['name']  
+  var new_reviews = []
+   //get artist from database and save array of current reviews
+  await db.get().collection('Venues').find({venue_name:venue}).toArray()
+    .then((venues) => {
+      //check if they don't already have reviews
+      if (venues[0].reviews) {
+        new_reviews = venues[0].reviews;
+      }
+      //add new review to array
+      new_reviews.push(req.body.review)
+      
+    });
+  //update artist in db
+  const result = db.get().collection('Venues').findOneAndUpdate({venue_name:venue},{$set: {reviews:new_reviews}})
+  res.status(200).json(result);
+})
 
 module.exports = router

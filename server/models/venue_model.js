@@ -20,7 +20,8 @@ const Venue_Schema = new Schema({
     phoneNumber: {
         type: String,
         match: /^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)\d{4}$/,
-    }, 
+    },
+    reviews: [String], 
     createdAt: {
         type: Date,
         required: true,

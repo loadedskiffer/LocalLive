@@ -26,11 +26,13 @@ const Artist_Schema = new Schema({
       tiktok: String,
       merchStore: String,
     },
+    reviews: [String],
     createdAt: {
       type: Date,
       required: true,
       default: Date.now,
-  }
+   }
+   
 })
 
 // Create new artist model using schema

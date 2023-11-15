@@ -1,15 +1,11 @@
 const express = require('express')
 const router = express.Router()
 
-//this won't be here yet on this branch but act like it in
-//const Artist = require('../../models/Artist')
 const Artist = require('../models/artist_model.js')
 var db = require('../database');
 
-
-//for now this just gets all artists, using to test if we are communicating with db properly
 // @route GET /artist
-// @desc Get all artists
+// @desc Get the names of all artists for search functionality
 router.get('/all', (req, res) => {
   db.get().collection('Artists').find({}).toArray()
     .then((events) => {
@@ -48,4 +44,29 @@ router.post('/create', async (req, res) => {
   res.status(200).json(result);
 })
 
+// @route POST /artist/reviews/:name
+// @desc add review for an artist
+//:name in the path needs to be the name of the artist
+//req.body must have a review field containing the review
+router.post('/reviews/:name/', async (req, res) => {
+  console.log(req.body)
+  var artist = req.params['name']  
+  var new_reviews = []
+   //get artist from database and save array of current reviews
+  await db.get().collection('Artists').find({artist_name:artist}).toArray()
+    .then((artists) => {
+      //check if they don't already have reviews
+      if (artists[0].reviews) {
+        new_reviews = artists[0].reviews;
+      }
+      //add new review to array
+      new_reviews.push(req.body.review)
+      
+    });
+  //update artist in db
+  const result = db.get().collection('Artists').findOneAndUpdate({artist_name:artist},{$set: {reviews:new_reviews}})
+  res.status(200).json(result);
+})
+
 module.exports = router
+
