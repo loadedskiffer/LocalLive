@@ -5,7 +5,7 @@ const Event = require('../models/event_model.js')
 var db = require('../database');
 
 // @route GET /artist
-// @desc Get all artists
+// @desc Get all events
 router.get('/all', (req, res) => {
     db.get().collection('Events').find({}).toArray()
       .then((events) => {
@@ -14,6 +14,7 @@ router.get('/all', (req, res) => {
   })
 
 //get all events for an artist
+//:name must be the name of the artist
 router.get('/artist/:name', (req, res) => {
   var artist = req.params['name']  
   console.log()
@@ -24,6 +25,7 @@ router.get('/artist/:name', (req, res) => {
 })
 
 //get all events at a venue
+//:name must be the name of the venue
 router.get('/venue/:name', (req, res) => {
   var venue = req.params['name'] 
   db.get().collection('Events').find({venueName:venue}).toArray()

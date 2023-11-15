@@ -5,7 +5,7 @@ const Artist = require('../models/artist_model.js')
 var db = require('../database');
 
 // @route GET /artist
-// @desc Get all artists
+// @desc Get the names of all artists for search functionality
 router.get('/all', (req, res) => {
   db.get().collection('Artists').find({}).toArray()
     .then((events) => {
