@@ -11,22 +11,43 @@ const EventForm = ({ addEvent }) => {
   const [artist, setArtist] = useState('');
   const [description, setDescription] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    addEvent({
-      eventName,
-      date,
-      time,
-      artist,
-      description,
-    });
+
+    try {
+      // Make a POST request to the backend
+      const response = await fetch('http://localhost:5000/event/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          event_name: eventName,
+          date,
+          duration: time, 
+          artistID: artist, 
+          parking_and_admission_info: description,
+        }),
+      });
+
+      if (response.ok) {
+        // If the response is successful, update the UI or do other tasks
+        const result = await response.json();
+        console.log(result);
+      } else {
+        // Handle error cases
+        console.error('Error creating event');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+
     setEventName('');
     setDate('');
     setTime('');
     setArtist('');
     setDescription('');
-  };//save form data while submit the form
-
+  };
   return (
     <div className='PageContainer'>
         <form onSubmit={handleSubmit}>
