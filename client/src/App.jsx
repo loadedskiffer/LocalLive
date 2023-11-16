@@ -9,7 +9,7 @@ import Signup from './components/Signup/Signup.jsx';
 import VenueProfile from './pages/VenueProfile';
 import EventProfile from './pages/EventProfile';
 import EventForm from './components/EventForm';
-import SearchPage from './pages/SearchPage'; // Import the SearchPage component
+import SearchPage from './pages/SearchPage/SearchPage'; // Import the SearchPage component
 import './App.css';
 
 // Main App component that serves as the entry point for the application
