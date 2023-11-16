@@ -72,4 +72,15 @@ router.post('/reviews/:name/', async (req, res) => {
   res.status(200).json(result);
 })
 
+
+//get all reviews for a venue
+//:name must be the name of the venue
+router.get('/reviews/:name', (req, res) => {
+  var venue = req.params['name'] 
+  db.get().collection('Venues').find({venue_name:venue}).toArray()
+    .then((venues) => {
+    res.json(venues[0].reviews)
+  });
+})
+
 module.exports = router
