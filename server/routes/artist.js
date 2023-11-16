@@ -68,5 +68,16 @@ router.post('/reviews/:name/', async (req, res) => {
   res.status(200).json(result);
 })
 
+
+//get all reviews for an artist
+//:name must be the name of the artist
+router.get('/reviews/:name', (req, res) => {
+  var artist = req.params['name'] 
+  db.get().collection('Artists').find({artist_name:artist}).toArray()
+    .then((artists) => {
+    res.json(artists[0].reviews)
+  });
+})
+
 module.exports = router
 
