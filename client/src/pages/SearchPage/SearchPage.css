@@ -1,0 +1,26 @@
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .search-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .search-dropdown {
+    width: 200px; /* Adjust the width as needed */
+    height: 40px; /* Adjust the height as needed */
+    font-size: 16px; /* Adjust font size as needed */
+  }
+  
+  .search-button {
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+  }
+  
