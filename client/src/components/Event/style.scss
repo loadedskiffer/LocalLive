@@ -1,3 +1,5 @@
+/* Styles for the page container */
+
 .PageContainer {
     width: 80%;
     max-width: 850px;
@@ -6,6 +8,8 @@
     box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
     text-align: center;
 }
+/* Styles for the profile card */
+
 .ProfileCard {
     display: flex;
     flex-direction: column;
@@ -15,6 +19,7 @@
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 8px 16px -8px rgba(0, 0, 0, 0.4);
+    /* Styles for the avatar section */
 
     .avatar {
         position: relative;
@@ -25,6 +30,7 @@
         flex-shrink: 0;
         width: 100%;
         background: linear-gradient(#de685e, #ee786e);
+    /* Styles for the avatar photo */
 
         .photo {
             width: 90px;
@@ -35,7 +41,8 @@
             border-radius: 50%;
             box-shadow: 0 0 0 8px rgba(0, 0, 0, 0.1);
         }
-        
+            /* Styles for the avatar name */
+
         h2 {
             margin: 0;
             padding: 0 12px;
@@ -47,6 +54,7 @@
             background-color: #bf5a51;
             border-radius: 13px;
         }
+    /* Styles for additional information in the avatar */
 
         span {
             padding: 0 10px;
@@ -86,6 +94,7 @@
             max-height: 80px;   // 4 rows
             overflow: hidden;
         }
+    /* Styles for unordered lists in details */
 
         ul {
             margin: 0;
@@ -114,6 +123,7 @@
                 text-align: right;
             }
         }
+    /* Styles for underlined buttons in details */
 
         button {
             position: relative;

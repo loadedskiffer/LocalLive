@@ -2,8 +2,14 @@ import React, { useState } from "react";
 import "./style.scss";
 import PropTypes from "prop-types";
 import Profile from "../Profile/index.js";
+
+// Event component to display event details and handle venue details
+
 const Event = ({ event, onVenueClick, closeModal }) => {
   const [showVenueDetail, setShowVenueDetail] = useState(false);
+
+    // Sample data for venue, replace with real data as needed
+
   const sampleVenueData = {
     name: "Sample Venue",
     location: "Sample Location",
@@ -11,6 +17,7 @@ const Event = ({ event, onVenueClick, closeModal }) => {
     menu: "Sample Menu",
     review: "Sample Review",
   };
+  // Function to handle venue click
 
   const handleVenueClick = () => {
     if (onVenueClick) {
@@ -18,6 +25,7 @@ const Event = ({ event, onVenueClick, closeModal }) => {
     }
     setShowVenueDetail(true);
   };
+  // Function to switch back to event details from venue details
 
   const handleBackToEvent = () => {
     setShowVenueDetail(false);
@@ -57,6 +65,7 @@ const Event = ({ event, onVenueClick, closeModal }) => {
     </div>
   );
 };
+// PropTypes for type checking
 
 Event.propTypes = {
   event: PropTypes.shape({
@@ -69,10 +78,11 @@ Event.propTypes = {
   onVenueClick: PropTypes.func,
   closeModal: PropTypes.func.isRequired,
 };
+// Style for clickable elements
 
 const clickableStyle = {
   cursor: "pointer",
-  // backgroundColor: '#e0e0e0', // Change this color to the desired hover color
+  // backgroundColor: '#e0e0e0', 
 };
 
 export default Event;
