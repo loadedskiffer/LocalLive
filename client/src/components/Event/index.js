@@ -1,88 +1,90 @@
-import React, { useState } from "react";
-import "./style.scss";
-import PropTypes from "prop-types";
-import Profile from "../Profile/index.js";
-
-// Event component to display event details and handle venue details
+import React, { useState } from 'react';
+import './style.scss';
+import PropTypes from 'prop-types';
+import Profile from '../Profile/index.js';
 
 const Event = ({ event, onVenueClick, closeModal }) => {
   const [showVenueDetail, setShowVenueDetail] = useState(false);
-
-    // Sample data for venue, replace with real data as needed
-
-  const sampleVenueData = {
-    name: "Sample Venue",
-    location: "Sample Location",
-    openHour: "Sample Open Hour",
-    menu: "Sample Menu",
-    review: "Sample Review",
-  };
-  // Function to handle venue click
+  const [venueData, setVenueData] = useState(null);
 
   const handleVenueClick = () => {
     if (onVenueClick) {
-      onVenueClick(event.venue);
+      onVenueClick(event.venueName);
     }
     setShowVenueDetail(true);
+    fetchVenueDetails(); // Fetch venue details when venue is clicked
   };
-  // Function to switch back to event details from venue details
 
+  const fetchVenueDetails = async () => {
+    try {
+      const response = await fetch(`http://localhost:5000/venue/${event.venueName}`);
+      if (response.ok) {
+        const data = await response.json();
+        const venueDetails = {
+          ...data,
+          parking_and_admission_info: event.parking_and_admission_info,
+        };
+        setVenueData(venueDetails); // Update venue data state with fetched details including parking info
+      } else {
+        console.error('Venue information not found in the database');
+        setVenueData(null); // Set venue data state to null indicating information not found
+      }
+    } catch (error) {
+      console.error('Error fetching venue details:', error);
+    }
+  };
   const handleBackToEvent = () => {
     setShowVenueDetail(false);
   };
 
   return (
     <div className="modal-overlay">
-      <div className="EventModal" style={{ width: "80vw", height: "80vh" }}>
+      <div className="EventModal" style={{ width: '80vw', height: '80vh' }}>
         {!showVenueDetail ? (
           <>
             <h2 style={clickableStyle} onClick={handleVenueClick}>
-              {event.venue}
+              {event.venueName}
             </h2>
             <div>
-              <h3>Artist: {event.artist}</h3>
-              <p>Date: {event.date}</p>
-              <p>Time: {event.time}</p>
-              <p>Location: {event.address}</p>
-              <p>RSVP</p>
+              <h3>Artist: {event.artistName}</h3>
+              <p>Date: {new Date(event.date).toDateString()}</p>
+              <p>Time: {event.duration}</p>
+              <p>Note: {event.parking_and_admission_info}</p>
             </div>
             <button onClick={handleVenueClick}>Check Out Venue</button>
             <button onClick={closeModal}>Close</button>
           </>
         ) : (
-          <Profile
-            venueName={event.venue}
-            venueData={sampleVenueData}
-            closeModal={handleBackToEvent}
-          />
-        )}
-        {showVenueDetail && (
-          <button className="back-to-event" onClick={handleBackToEvent}>
-            Back to Event
-          </button>
+          <>
+            {venueData ? (
+              <Profile venueName={event.venueName} venueData={venueData} closeModal={handleBackToEvent} />
+            ) : (
+              <div className="venue-info-not-found">
+                <h2>Venue information not found. Please check back later.</h2>
+                <button onClick={closeModal}>Close</button>
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>
   );
 };
-// PropTypes for type checking
 
 Event.propTypes = {
   event: PropTypes.shape({
-    name: PropTypes.string,
-    artist: PropTypes.string,
+    venueName: PropTypes.string,
+    artistName: PropTypes.string,
     date: PropTypes.string,
-    time: PropTypes.string,
-    address: PropTypes.string,
+    duration: PropTypes.string,
+    parking_and_admission_info:PropTypes.string,
   }).isRequired,
   onVenueClick: PropTypes.func,
   closeModal: PropTypes.func.isRequired,
 };
-// Style for clickable elements
 
 const clickableStyle = {
-  cursor: "pointer",
-  // backgroundColor: '#e0e0e0', 
+  cursor: 'pointer',
 };
 
 export default Event;
