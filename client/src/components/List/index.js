@@ -40,7 +40,7 @@ const EventList = ({ onTitleClick, onEventClick }) => {
         const response = await axios.get('http://localhost:5000/event/all');
         if (response.status === 200) {
           const eventsData = response.data.map((event) => ({
-            title: event.venueName,
+            title: event.event_name,
             data: [event],
           }));
           setSections(eventsData);
