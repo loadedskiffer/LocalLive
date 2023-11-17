@@ -9,11 +9,7 @@ import Signup from './components/Signup/Signup.jsx';
 import VenueProfile from './pages/VenueProfile';
 import EventProfile from './pages/EventProfile';
 import EventForm from './components/EventForm';
-<<<<<<< .mine
 import SearchPage from './pages/SearchPage/SearchPage'; // Import the SearchPage component
-=======
-import Review from './components/Review';
->>>>>>> .theirs
 import './App.css';
 import ReviewsPage from './components/Review';
 
@@ -31,13 +27,8 @@ function App() {
                         <Link to="/event">Create Event</Link>
                         <Link to="/login">Login</Link>
                         <Link to="/signup">Signup</Link>
-<<<<<<< .mine
                         <Link to="/review">Review</Link>
                         <Link to="/search">Search</Link> {/* Add a link to the SearchPage */}
-=======
-                        <Link to="/review">Review</Link>
-
->>>>>>> .theirs
                     </nav>
                 </div>
                 

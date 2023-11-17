@@ -1,5 +1,9 @@
 /* style.css */
-
+.PageContainer{
+    align-items: center;
+    background-color: #fff;
+    height: 100%;
+}
 .reviewTable {
     width: 100%;
     border-collapse: collapse;
@@ -23,4 +27,24 @@
     justify-content: space-between;
     margin-top: 10px;
     padding-right: 30px;
+  }
+
+  .addReviewForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align the form content */
+    margin-top: 20px;
+  }
+
+  .addReviewButton {
+    display: flex;
+    justify-content: center; /* Center align the button horizontally */
+    margin-top: 20px; /* Adjust margin as needed */
+  }
+
+  .textAreaReview {
+    width: 100%; /* Set width to 80% of the container */
+    height: 200px; /* Set a larger height */
+    resize: vertical; /* Allow vertical resizing */
+    margin-bottom: 15px; /* Adjust margin as needed */
   }

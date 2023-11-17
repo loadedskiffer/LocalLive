@@ -39,28 +39,25 @@ const ReviewForm = ({ addReview }) => {
     setReviewText(''); // Clear the review text
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmitReview = async (e) => {
     e.preventDefault();
-  
+
     try {
       const response = await axios.post(`http://localhost:5000/${reviewType}/reviews/${selectedName}`, {
         review: reviewText,
       });
-  
+
       if (response.status === 200) {
-        console.log('Review added successfully');
-        setReviewText(''); // Clear the review text after submission
-        fetchExistingReviews(selectedName); // Fetch updated reviews
+        // Update existing reviews after successful submission
+        setExistingReviews([...existingReviews, reviewText]);
+        setReviewText(''); // Clear review text after submission
+        setShowAddReviewForm(false); // Hide the add review form
       } else {
-        console.error('Error adding review');
-        // Handle error cases
+        console.error('Failed to add review');
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error adding review:', error);
     }
-  
-    setSelectedName('');
-    setReviewText('');
   };
   
   const handleReviewTypeChange = (type) => {
@@ -94,7 +91,6 @@ const ReviewForm = ({ addReview }) => {
 
   return (
     <div className='PageContainer'>
-      <form onSubmit={handleSubmit}>
         <h2>Review</h2>
 
         {/* Select Review Type */}
@@ -136,28 +132,29 @@ const ReviewForm = ({ addReview }) => {
 
         {/* Add Review Button */}
       {!showAddReviewForm && (
-        <button onClick={handleAddReviewClick}>Add Review</button>
+        <div className="addReviewButton">
+          <button onClick={() => setShowAddReviewForm(true)}>Add Review</button>
+        </div>
       )}
 
-      {/* Review Input Form */}
+      {/* Add Review Form */}
       {showAddReviewForm && (
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>Add Review:</label>
-            <textarea
+        <div className="addReviewForm">
+          <form onSubmit={handleSubmitReview}>
+          <textarea
+              className="textAreaReview" // Add the class to style the textarea
               value={reviewText}
               onChange={(e) => setReviewText(e.target.value)}
               rows={6}
               required
             />
-          </div>
-          <div className="buttonGroup">
-            <button type="submit">Submit Review</button>
-            <button onClick={() => setShowAddReviewForm(false)}>Cancel</button>
-          </div>
-        </form>
+            <div className="buttonGroup">
+              <button type="submit">Submit Review</button>
+              <button onClick={() => handleCancelClick()}>Cancel</button>
+            </div>
+          </form>
+        </div>
       )}
-      </form>
     </div>
   );
 };
