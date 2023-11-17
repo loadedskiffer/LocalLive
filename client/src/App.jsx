@@ -14,18 +14,6 @@ import './App.css';
 import ReviewsPage from './components/Review';
 
 // Main App component that serves as the entry point for the application
-
-
-						<Link to="/review">Review</Link>
-						<Link to="/search">Search</Link> {/* Add a link to the SearchPage */}
-					<Route path="/review" element={<ReviewsPage />} />
-                    <Route path="/signup" element={<Signup />}>
-			          <Route path="audience" element={<AudienceSignup />} />
-			          <Route path="vendor" element={<VendorSignup />} />
-			        </Route>
-			        <Route path="/event/:eventId" element={<EventProfile />} />
-			        <Route path="/search" element={<SearchPage />} /> {/* Add a route for the SearchPage */}
-<<<<<<< .mine
 function App() {
     return (
                 // Using React Router for navigation
@@ -40,6 +28,7 @@ function App() {
                         <Link to="/login">Login</Link>
                         <Link to="/signup">Signup</Link>
                         <Link to="/review">Review</Link>
+                        <Link to="/search">Search</Link> {/* Add a link to the SearchPage */}
                     </nav>
                 </div>
                 
@@ -51,47 +40,16 @@ function App() {
                     <Route path="/event" element={<EventForm />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/review" element={<ReviewsPage />} />
-                    <Route path="/signup" element={<Signup />} />
-                    <Route path="/signup/audience" element={<AudienceSignup />} />
-                    <Route path="/signup/vendor" element={<VendorSignup />} />
+                    <Route path="/signup" element={<Signup />}>
+			          <Route path="audience" element={<AudienceSignup />} />
+			          <Route path="vendor" element={<VendorSignup />} />
+			        </Route>
+			        <Route path="/event/:eventId" element={<EventProfile />} />
+			        <Route path="/search" element={<SearchPage />} /> {/* Add a route for the SearchPage */}
                 </Routes>
             </div>
         </Router>
     );
-=======
-        {/* Defining the main routes for the application */}
-        {/* Routes */}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/venue/:venueName" element={<VenueProfile />} />
-          <Route path="/event" element={<EventForm />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />}>
-            <Route path="audience" element={<AudienceSignup />} />
-            <Route path="vendor" element={<VendorSignup />} />
-          </Route>
-          <Route path="/event/:eventId" element={<EventProfile />} />
-          <Route path="/search" element={<SearchPage />} /> {/* Add a route for the SearchPage */}
-        </Routes>
-      </div>
-    </Router>
-  );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> .theirs
 }
 
 // Exporting the App component to be used elsewhere in the application

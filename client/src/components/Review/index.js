@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import  './style.css';
+
 /*
 ReviewForm: Allows users to add reviews for artists or venues
 */
@@ -6,73 +9,154 @@ const ReviewForm = ({ addReview }) => {
   const [reviewType, setReviewType] = useState('artist');
   const [selectedName, setSelectedName] = useState('');
   const [reviewText, setReviewText] = useState('');
+  const [names, setNames] = useState([]);
+  const [existingReviews, setExistingReviews] = useState([]);
+  const [showAddReviewForm, setShowAddReviewForm] = useState(false);
+
+  const fetchExistingReviews = async (name) => {
+    if (!selectedName) {
+      setExistingReviews([]); // Clear existing reviews if no name is selected
+      return;
+    }
+    try {
+      const response = await axios.get(`http://localhost:5000/${reviewType}/reviews/${name}`);
+      if (response.status === 200) {
+        setExistingReviews(response.data); // Update state with existing reviews
+      } else {
+        console.error('Failed to fetch existing reviews');
+      }
+    } catch (error) {
+      console.error('Error fetching existing reviews:', error);
+    }
+  };
+
+  const handleAddReviewClick = () => {
+    setShowAddReviewForm(true); // Show the review input form
+  };
+
+  const handleCancelClick = () => {
+    setShowAddReviewForm(false); // Hide the review input form
+    setReviewText(''); // Clear the review text
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
-      // Make a POST request to the backend
-      const response = await fetch('http://localhost:5000/add-review', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          reviewType,
-          name: selectedName,
-          review: reviewText,
-        }),
+      const response = await axios.post(`http://localhost:5000/${reviewType}/reviews/${selectedName}`, {
+        review: reviewText,
       });
-
-      if (response.ok) {
-        // If the response is successful, update the UI or do other tasks
-        const result = await response.json();
-        console.log(result);
+  
+      if (response.status === 200) {
+        console.log('Review added successfully');
+        setReviewText(''); // Clear the review text after submission
+        fetchExistingReviews(selectedName); // Fetch updated reviews
       } else {
-        // Handle error cases
         console.error('Error adding review');
+        // Handle error cases
       }
     } catch (error) {
       console.error('Error:', error);
     }
-
+  
     setSelectedName('');
     setReviewText('');
   };
+  
+  const handleReviewTypeChange = (type) => {
+    setReviewType(type);
+    console.log("The review type is "+type); // Check the data received
+    setSelectedName(''); // Reset selected name when review type changes
+    setExistingReviews([]); // Clear existing reviews 
+  };
+
+  useEffect(() => {
+    // Fetch artist or venue names based on reviewType
+    const fetchNames = async () => {
+      axios.get(`http://localhost:5000/${reviewType}/all`)
+      .then(response => {
+        //console.log("fetchNames "+response.data); 
+        setNames(response.data); // Update state with the fetched data
+      })
+      .catch(error => {
+        console.error('There was a problem with the axios get request:', error);
+      });
+    };
+
+    fetchNames();
+  }, [reviewType]);
+
+  useEffect(() => {
+    if (selectedName) {
+      fetchExistingReviews(selectedName);
+    }
+  }, [selectedName]);
 
   return (
     <div className='PageContainer'>
       <form onSubmit={handleSubmit}>
-        <h2>Add Review</h2>
+        <h2>Review</h2>
+
+        {/* Select Review Type */}
         <div>
           <label>Select Review Type:</label>
           <select
             value={reviewType}
-            onChange={(e) => setReviewType(e.target.value)}
+            onChange={(e) => handleReviewTypeChange(e.target.value)}
           >
             <option value="artist">Artist</option>
             <option value="venue">Venue</option>
           </select>
         </div>
+
+        {/* Select Artist or Venue */}
         <div>
           <label>Select {reviewType === 'artist' ? 'Artist' : 'Venue'}:</label>
-          <input
-            type="text"
+          <select
             value={selectedName}
             onChange={(e) => setSelectedName(e.target.value)}
             required
-          />
+          >
+            <option value="">Select {reviewType === 'artist' ? 'Artist' : 'Venue'}</option>
+            {names && names.map((name) => (
+              <option key={name} value={name}>{name}</option>
+            ))}
+          </select>
         </div>
+
+        {/* Display existing reviews */}
         <div>
-          <label>Add Review:</label>
-          <textarea
-            value={reviewText}
-            onChange={(e) => setReviewText(e.target.value)}
-            rows={6}
-            required
-          />
+          <h3>Reviews for {selectedName}</h3>
+          <ul>
+            {existingReviews && existingReviews.map((review, index) => (
+              <li key={index}>{review}</li>
+            ))}
+          </ul>
         </div>
-        <button type="submit">Submit Review</button>
+
+        {/* Add Review Button */}
+      {!showAddReviewForm && (
+        <button onClick={handleAddReviewClick}>Add Review</button>
+      )}
+
+      {/* Review Input Form */}
+      {showAddReviewForm && (
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label>Add Review:</label>
+            <textarea
+              value={reviewText}
+              onChange={(e) => setReviewText(e.target.value)}
+              rows={6}
+              required
+            />
+          </div>
+          <div className="buttonGroup">
+            <button type="submit">Submit Review</button>
+            <button onClick={() => setShowAddReviewForm(false)}>Cancel</button>
+          </div>
+        </form>
+      )}
       </form>
     </div>
   );
