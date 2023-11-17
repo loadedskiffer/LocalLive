@@ -11,42 +11,45 @@ import EventProfile from './pages/EventProfile';
 import EventForm from './components/EventForm';
 import SearchPage from './pages/SearchPage/SearchPage'; // Import the SearchPage component
 import './App.css';
+import ReviewsPage from './components/Review';
 
 // Main App component that serves as the entry point for the application
 function App() {
-  return (
-    // Using React Router for navigation
-    <Router>
-      <div className="App">
-        {/* Navbar */}
-        <div className="navbar">
-          <h2>Local Live</h2>
-          <nav>
-            <Link to="/">Home</Link>
-            <Link to="/event">Create Event</Link>
-            <Link to="/search">Search</Link> {/* Add a link to the SearchPage */}
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Signup</Link>
-          </nav>
-        </div>
-
-        {/* Defining the main routes for the application */}
-        {/* Routes */}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/venue/:venueName" element={<VenueProfile />} />
-          <Route path="/event" element={<EventForm />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />}>
-            <Route path="audience" element={<AudienceSignup />} />
-            <Route path="vendor" element={<VendorSignup />} />
-          </Route>
-          <Route path="/event/:eventId" element={<EventProfile />} />
-          <Route path="/search" element={<SearchPage />} /> {/* Add a route for the SearchPage */}
-        </Routes>
-      </div>
-    </Router>
-  );
+    return (
+                // Using React Router for navigation
+        <Router>
+            <div className="App">
+                {/* Navbar */}
+                <div className="navbar">
+                    <h2>Local Live</h2>
+                    <nav>
+                        <Link to="/">Home</Link>
+                        <Link to="/event">Create Event</Link>
+                        <Link to="/login">Login</Link>
+                        <Link to="/signup">Signup</Link>
+                        <Link to="/review">Review</Link>
+                        <Link to="/search">Search</Link> {/* Add a link to the SearchPage */}
+                    </nav>
+                </div>
+                
+                {/* Defining the main routes for the application */} 
+                {/* Routes */}
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/venue/:venueName" component={VenueProfile} />
+                    <Route path="/event" element={<EventForm />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/review" element={<ReviewsPage />} />
+                    <Route path="/signup" element={<Signup />}>
+			          <Route path="audience" element={<AudienceSignup />} />
+			          <Route path="vendor" element={<VendorSignup />} />
+			        </Route>
+			        <Route path="/event/:eventId" element={<EventProfile />} />
+			        <Route path="/search" element={<SearchPage />} /> {/* Add a route for the SearchPage */}
+                </Routes>
+            </div>
+        </Router>
+    );
 }
 
 // Exporting the App component to be used elsewhere in the application
