@@ -9,7 +9,7 @@ import Signup from './components/Signup/Signup.jsx';
 import VenueProfile from './pages/VenueProfile';
 import EventProfile from './pages/EventProfile';
 import EventForm from './components/EventForm';
-import SearchPage from './pages/SearchPage/SearchPage'; // Import the SearchPage component
+import SearchPage from './components/SearchPage'; // Import the SearchPage component
 import './App.css';
 import ReviewsPage from './components/Review';
 
@@ -28,7 +28,7 @@ function App() {
                         <Link to="/login">Login</Link>
                         <Link to="/signup">Signup</Link>
                         <Link to="/review">Review</Link>
-                        <Link to="/search">Search</Link> {/* Add a link to the SearchPage */}
+                        <Link to="/search">Search</Link> 
                     </nav>
                 </div>
                 
@@ -45,7 +45,7 @@ function App() {
 			          <Route path="vendor" element={<VendorSignup />} />
 			        </Route>
 			        <Route path="/event/:eventId" element={<EventProfile />} />
-			        <Route path="/search" element={<SearchPage />} /> {/* Add a route for the SearchPage */}
+			        <Route path="/search" element={<SearchPage />} /> 
                 </Routes>
             </div>
         </Router>
