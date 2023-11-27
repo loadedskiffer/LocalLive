@@ -1,54 +1,96 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import axios from 'axios';
+const express = require('express')
+const router = express.Router()
 
-const Profile = ({ venueData, closeModal }) => {
-  const [selectedVenueDetails, setSelectedVenueDetails] = useState(null);
+const Venue = require('../models/venue_model.js')
+var db = require('../database');
 
-  useEffect(() => {
-    const fetchVenueDetails = async () => {
-      try {
-        const response = await axios.get(`http://localhost:5000/venue/search/${encodeURIComponent(venueData.name)}`);
-        if (response.status === 200) {
-          console.log("result:"+response.data);
-          setSelectedVenueDetails(response.data);
-        } else {
-          console.error('Failed to fetch venue details');
-        }
-      } catch (error) {
-        console.error('Error fetching venue details:', error);
+//get names of all venue names for search functionality
+router.get('/all', (req, res) => {
+  db.get().collection('Venues').find({}).toArray()
+    .then((events) => {
+    names = []
+    events.forEach(element => {
+      names.push(element['venue_name'])
+    });
+    console.log(names)
+    res.status(200).json(names);
+  });
+})
+
+router.post('/create', async (req, res) => {
+    //first do some checking to make sure we have everything we need
+    console.log(req.body)
+    // let fields = ['event_name', 'duration', 'date', 'venueID', 'artistID', 'parking_and_admission_info'];
+    // for (var field in fields) { 
+    //     if(!(req.body).hasOwnProperty(fields[field])) {
+    //         console.log(fields[field])
+    //         res.status(400).json({error: "missing required fields" + field});
+    //     }
+    // }
+    //create model
+    const newVenue = new Venue({
+        venue_name: req.body.venue_name,
+        venue_website: req.body.venue_website,
+        street_address: req.body.street_address,
+        city: req.body.city,
+        state: req.body.state,
+        zipcode: req.body.zipcode,
+        country: req.body.country,
+        xcoor: req.body.xcoor,
+        ycoor: req.body.ycoor,
+        hours: req.body.hours,
+        phoneNumber : req.body.phoneNumber
+    })
+
+    //put it in database
+    console.log(newVenue)     
+    const result = await db.get().collection('Venues').insertOne(newVenue); 
+    res.status(200).json(result);
+  })
+
+// @route POST /venue/reviews/:name
+// @desc add review for a venue
+//:name in the path needs to be the name of the venue
+//req.body must have a review field containing the review
+router.post('/reviews/:name/', async (req, res) => {
+  console.log(req.body)
+  var venue = req.params['name']  
+  var new_reviews = []
+   //get artist from database and save array of current reviews
+  await db.get().collection('Venues').find({venue_name:venue}).toArray()
+    .then((venues) => {
+      //check if they don't already have reviews
+      if (venues[0].reviews) {
+        new_reviews = venues[0].reviews;
       }
-    };
+      //add new review to array
+      new_reviews.push(req.body.review)
+      
+    });
+  //update artist in db
+  const result = db.get().collection('Venues').findOneAndUpdate({venue_name:venue},{$set: {reviews:new_reviews}})
+  res.status(200).json(result);
+})
 
-    if (venueData) {
-      fetchVenueDetails();
-    }
-  }, [venueData]);
 
-  return (
-    <div className="VenueDetailOverlay">
-      <div className="VenueDetailModal">
-        <span className="close" onClick={closeModal}>
-          &times;
-        </span>
-        {selectedVenueDetails ? (
-          <div>
-            <h3>Venue Detail: {selectedVenueDetails.venue_name}</h3>
-            <p>Location: {selectedVenueDetails.street_address}, {selectedVenueDetails.city}, {selectedVenueDetails.state}, {selectedVenueDetails.zipcode}</p>
-            <p>Website: {selectedVenueDetails.venue_website}</p>
-            {/* Display other venue details */}
-          </div>
-        ) : (
-          <p>Loading...</p>
-        )}
-      </div>
-    </div>
-  );
-};
+//get all reviews for a venue
+//:name must be the name of the venue
+router.get('/reviews/:name', (req, res) => {
+  var venue = req.params['name'] 
+  db.get().collection('Venues').find({venue_name:venue}).toArray()
+    .then((venues) => {
+    res.json(venues[0].reviews)
+  });
+})
 
-Profile.propTypes = {
-  venueData: PropTypes.object.isRequired,
-  closeModal: PropTypes.func.isRequired,
-};
+//search venue by name and get all info
+//:name must be the name of the venue
+router.get('/search/:name', (req, res) => {
+  var venue = req.params['name'] 
+  db.get().collection('Venues').find({venue_name:venue}).toArray()
+    .then((venues) => {
+    res.json(venues[0])
+  });
+})
 
-export default Profile;
+module.exports = router
