@@ -83,4 +83,14 @@ router.get('/reviews/:name', (req, res) => {
   });
 })
 
+//search venue by name and get all info
+//:name must be the name of the venue
+router.get('/search/:name', (req, res) => {
+  var venue = req.params['name'] 
+  db.get().collection('Venues').find({venue_name:venue}).toArray()
+    .then((venues) => {
+    res.json(venues[0])
+  });
+})
+
 module.exports = router
