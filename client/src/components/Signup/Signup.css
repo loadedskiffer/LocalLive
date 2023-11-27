@@ -1,16 +1,14 @@
 .signup-selection-container {
-    width: 142.5%; 
+    width: 80%; /* Adjust width to be consistent with other forms */
     max-width: 750px; 
     margin: 5% auto; 
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
     text-align: center;
-    height: 600px;
-    background-color: #fff;
+    height: auto; /* Adjust height automatically based on content */
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+    border-radius: 8px;
 }
-
-
-
 
 .signup-options {
     margin-top: 20px;
@@ -18,23 +16,26 @@
 
 .vendor-signup-btn, .audience-signup-btn {
     display: block;
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    font-size: 16px;
+    width: auto; /* Adjust width automatically based on content */
+    padding: 15px 30px; /* Increased padding for a larger button */
+    margin-bottom: 15px; /* Adjust margin as needed */
+    font-size: 18px; /* Larger font size for readability */
     border: none;
     border-radius: 4px;
-    background-color: #007BFF;
     color: white;
     cursor: pointer;
-    text-align: center;
-    text-decoration: none;
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Consistent shadow effect with other buttons */
+}
+
+.vendor-signup-btn:hover, .audience-signup-btn:hover {
+    opacity: 0.85; /* Slight transparency on hover for interaction feedback */
 }
 
 .vendor-signup-btn {
-    background-color: #28a745; 
+    background-color: #28a745; /* Green button for vendors */
 }
 
 .audience-signup-btn {
-    background-color: #17a2b8; 
+    background-color: #17a2b8; /* Blue button for audience */
 }
