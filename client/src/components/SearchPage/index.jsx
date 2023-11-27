@@ -110,7 +110,7 @@ const fetchEvents = async () => {
                 <li key={index}>
                   {/* Display event details */}
                   <p>Event: {event.event_name}</p>
-                  <p>Venue: {event.venue_name}</p>
+                  <p>Venue: {event.venueName}</p>
                   <p>Artist: {event.artistName}</p>
                   <p>Date: {new Date(event.date).toDateString()}</p>
                   <p>Time: {event.duration}</p>
