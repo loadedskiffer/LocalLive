@@ -9,7 +9,7 @@ const SearchPage = () => {
   useEffect(() => {
     const fetchOptions = async () => {
       try {
-        const url = searchType === 'artist' ? '/api/artist/all' : '/api/venue/all';
+        const url = searchType === 'artist' ? '/artist/all' : '/venue/all';
         const response = await fetch(url);
         const data = await response.json();
         if (response.ok) {
@@ -29,7 +29,7 @@ const SearchPage = () => {
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
-      const url = searchType === 'artist' ? `/api/events/artist/${selectedOption}` : `/api/events/venue/${selectedOption}`;
+      const url = searchType === 'artist' ? `/event/artist/${selectedOption}` : `/event/venue/${selectedOption}`;
       const response = await fetch(url);
       const data = await response.json();
       if (response.ok) {

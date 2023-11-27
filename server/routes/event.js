@@ -17,7 +17,7 @@ router.get('/all', (req, res) => {
 //:name must be the name of the artist
 router.get('/artist/:name', (req, res) => {
   var artist = req.params['name']  
-  console.log()
+  console.log("artistc:", artist)
   db.get().collection('Events').find({artistName:artist}).toArray()
     .then((events) => {
     res.json(events)

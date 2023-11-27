@@ -12,7 +12,7 @@ const SearchPage = () => {
   useEffect(() => {
     const fetchOptions = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/${searchType}/all`);
+        const response = await axios.get(`http://localhost:5000/${searchType}/all`);
         if (response.status === 200) {
           setOptions(response.data);
         } else {
@@ -30,7 +30,7 @@ const SearchPage = () => {
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get(`http://localhost:5000/api/events/${searchType}/${selectedOption}`);
+      const response = await axios.get(`http://localhost:5000/event/${searchType}/${selectedOption}`);
       if (response.status === 200) {
         setEvents(response.data);
       } else {
