@@ -10,6 +10,16 @@
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    background-color: #fff;
+
+  }
+
+  .search-result{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background-color: #fff;
   }
   
   .search-dropdown {

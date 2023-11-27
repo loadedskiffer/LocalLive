@@ -9,8 +9,9 @@ const SearchPage = () => {
   useEffect(() => {
     const fetchOptions = async () => {
       try {
-        const url = searchType === 'artist' ? '/artist/all' : '/venue/all';
-        const response = await fetch(url);
+    
+        const url = searchType === 'artist' ? '/artist/all' : '/venue/all';        
+        const response = await axios.get(`http://localhost:5000/${reviewType}/reviews/${name}`);
         const data = await response.json();
         if (response.ok) {
           setOptions(data);

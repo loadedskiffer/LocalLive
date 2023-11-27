@@ -7,6 +7,7 @@ const SearchPage = () => {
   const [selectedOption, setSelectedOption] = useState('');
   const [options, setOptions] = useState([]);
   const [events, setEvents] = useState([]);
+  const [selectedItemInfo, setSelectedItemInfo] = useState(null);
 
   // Fetch options based on searchType
   useEffect(() => {
@@ -14,6 +15,7 @@ const SearchPage = () => {
       try {
         const response = await axios.get(`http://localhost:5000/${searchType}/all`);
         if (response.status === 200) {
+          setSelectedItemInfo(response.data);
           setOptions(response.data);
         } else {
           console.error('Failed to fetch options');
@@ -27,19 +29,20 @@ const SearchPage = () => {
   }, [searchType]);
 
   // Handle search
-  const handleSearch = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.get(`http://localhost:5000/event/${searchType}/${selectedOption}`);
-      if (response.status === 200) {
-        setEvents(response.data);
-      } else {
-        console.error('Failed to fetch events');
-      }
-    } catch (error) {
-      console.error('Fetch error:', error);
+const handleSearch = async (e) => {
+  e.preventDefault();
+  try {
+    const response = await axios.get(`http://localhost:5000/${searchType}/search/${selectedOption}`);
+    if (response.status === 200) {
+      setSelectedItemInfo(response.data); // Update the selected item info state
+      setEvents(response.data.events || []); // Assuming events are part of the retrieved data
+    } else {
+      console.error('Failed to fetch events');
     }
-  };
+  } catch (error) {
+    console.error('Fetch error:', error);
+  }
+};
 
   return (
     <div className="search-container">
@@ -80,13 +83,30 @@ const SearchPage = () => {
       </form>
 
       {/* Display Events */}
-      <div>
+      <div className="search-result">
         <h3>Events for {selectedOption}</h3>
-        <ul>
-          {events.map((event, index) => (
-            <li key={index}>{event}</li>
-          ))}
-        </ul>
+        {/* Display selected artist or venue information */}
+        {selectedItemInfo && (
+          <div className="selected-item-info">
+            <h3>{searchType === 'artist' ? 'Artist' : 'Venue'} Information</h3>
+            <p>Name: {selectedItemInfo.venue_name || selectedItemInfo.artist_name}</p>
+            {/* Display other relevant information for artists or venues */}
+            {/* For example, for artists: */}
+            {searchType === 'artist' && (
+              <>
+                <p>Email: {selectedItemInfo.email}</p>
+                {/* Display additional artist information */}
+              </>
+            )}
+            {/* For venues: */}
+            {searchType === 'venue' && (
+              <>
+                <p>Website: {selectedItemInfo.venue_website}</p>
+                {/* Display additional venue information */}
+              </>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
