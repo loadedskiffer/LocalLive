@@ -1,74 +1,56 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import EventList from '../../components/List/index.js';
-//import "./style.scss";
-const fetchVenueData = async (venueName) => {
-  // Simulating fetching data from an API
-  const response = await fetch(`https://api.example.com/venues/${venueName}`);
-  const data = await response.json();
-  return data;
-};
+import axios from 'axios';
 
-const Profile = ({ venueData, closeModal }) => {
-  //const [venueData, setVenueData] = useState(null);
-  /** 
-  if (!venueData) {
-    return <div>Loading...</div>;
-  }*/
+const Profile = ({ venueName, closeModal }) => {
+  const [selectedVenueDetails, setSelectedVenueDetails] = useState(null);
+  //console.log("the selected venue in Profile is "+ venueName);
+  useEffect(() => {
+    const fetchVenueDetails = async () => {
+      if (venueName) { // Check if venueName and its name property exist
+        try {
+          const response = await axios.get(`http://localhost:5000/venue/search/${encodeURIComponent(venueName)}`);
+          if (response.status === 200) {
+            setSelectedVenueDetails(response.data);
+          } else {
+            console.error('Failed to fetch venue details');
+          }
+        } catch (error) {
+          console.error('Error fetching venue details:', error);
+        }
+      }
+    };
+  
+    fetchVenueDetails();
+  }, [venueName]);
 
   return (
     <div className="VenueDetailOverlay">
       <div className="VenueDetailModal">
-      <span className="close" onClick={closeModal}>
+        <span className="close" onClick={closeModal}>
           &times;
         </span>
-        {/*<h3>Venue Detail: {venueData.name}</h3>*/}
-        {venueData.name}
-        <p>Location: {venueData.location}</p>
-        <p>Open Hour: {venueData.openHour}</p>
-        <p>See Our Menu{venueData.menu}</p>
-        <p>See Our Review{venueData.review}</p>
-
-        {/* 
-        <div className="PageContainer">
-          <div className="ProfileCard">
-            <div className="avatar">
-              <h2>{venueData.name}</h2>
-            </div>
-            <div className={`details`}>
-              <>
-                <h2>Follow</h2>
-                <div>
-                  <p>Location: {venueData.location}</p>
-                  <p>Open Hour: {venueData.openHour}</p>
-                  <p>See Our Menu{venueData.menu}</p>
-                  <p>See Our Review{venueData.review}</p>
-                </div>
-                <div>
-                  <p>{venueData.bio !== '' ? venueData.bio : 'No description provided yet'}</p>
-                </div>
-              </>
-            </div>
+        {selectedVenueDetails ? (
+          <div>
+            <h3>Venue Detail: {selectedVenueDetails.venue_name}</h3>
+            <p>Location: {selectedVenueDetails.street_address}, {selectedVenueDetails.city}, {selectedVenueDetails.state}, {selectedVenueDetails.zipcode}</p>
+            <p>Website: {selectedVenueDetails.venue_website}</p>
+            <p>Hour: {selectedVenueDetails.hours}</p>
+            <p>Phone: {selectedVenueDetails.phoneNumber}</p>
           </div>
-          {/** 
-          <div className="event-list">
-            <h2>Posted Events</h2>
-            <EventList />
-          </div>
-        </div> 
-      */}
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
+      <div>
+        <button onClick={closeModal}>Back</button>
       </div>
     </div>
   );
 };
 
 Profile.propTypes = {
-  name: PropTypes.string.isRequired,
-  bio: PropTypes.string,
-  location: PropTypes.string,
-  openHour: PropTypes.string,
-  menu: PropTypes.string,
-  review: PropTypes.string,
+  venueName: PropTypes.any.isRequired,
   closeModal: PropTypes.func.isRequired,
 };
 
