@@ -17,7 +17,8 @@ const Event = ({ event, onVenueClick, closeModal }) => {
 
   const fetchVenueDetails = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/venue/${event.venueName}`);
+      const response = await fetch(`http://localhost:5000/venue/search/${event.venueName}`);
+      console.log("the selected venue in the list is "+ event.venueName);
       if (response.ok) {
         const data = await response.json();
         const venueDetails = {
