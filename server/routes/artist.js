@@ -79,5 +79,15 @@ router.get('/reviews/:name', (req, res) => {
   });
 })
 
+//search artist by name and get all info
+//:name must be the name of the artist
+router.get('/search/:name', (req, res) => {
+  var name = req.params['name'] 
+  db.get().collection('Artists').find({artist_name:name}).toArray()
+    .then((artists) => {
+    res.json(artists[0])
+  });
+})
+
 module.exports = router
 
