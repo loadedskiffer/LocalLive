@@ -42,7 +42,23 @@ const handleSearch = async (e) => {
   } catch (error) {
     console.error('Fetch error:', error);
   }
+  fetchEvents(); // Fetch events based on the selected venue or artist
 };
+
+// Function to fetch events based on selected venue or artist
+const fetchEvents = async () => {
+  try {
+    const response = await axios.get(`http://localhost:5000/event/search/${selectedOption}`);
+    if (response.status === 200) {
+      setEvents(response.data); // Update events state with fetched events
+    } else {
+      console.error('Failed to fetch events');
+    }
+  } catch (error) {
+    console.error('Fetch error:', error);
+  }
+};
+
 
   return (
     <div className="search-container">
@@ -84,7 +100,28 @@ const handleSearch = async (e) => {
 
       {/* Display Events */}
       <div className="search-result">
-        <h3>Events for {selectedOption}</h3>
+        <h3>Search Result</h3>
+        {/* Display Events */}
+        <div className="event-list">
+          <h3>Events for {selectedOption}</h3>
+          {events.length > 0 ? (
+            <ul>
+              {events.map((event, index) => (
+                <li key={index}>
+                  {/* Display event details */}
+                  <p>Event: {event.event_name}</p>
+                  <p>Venue: {event.venue_name}</p>
+                  <p>Artist: {event.artistName}</p>
+                  <p>Date: {new Date(event.date).toDateString()}</p>
+                  <p>Time: {event.duration}</p>
+                  <p>Note: {event.parking_and_admission_info}</p>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No events found for {selectedOption}</p>
+          )}
+        </div>
         {/* Display selected artist or venue information */}
         {selectedItemInfo && (
           <div className="selected-item-info">

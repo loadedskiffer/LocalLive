@@ -35,6 +35,23 @@ router.get('/venue/:name', (req, res) => {
 })
 
 
+// Search events by venue or artist name
+// :name must be the name of the venue or artist
+router.get('/search/:name', (req, res) => {
+  const searchTerm = req.params['name'];
+  
+  db.get().collection('Events').find({
+    $or: [{ venueName: searchTerm }, { artistName: searchTerm }]
+  }).toArray()
+    .then((events) => {
+      res.json(events);
+    })
+    .catch((error) => {
+      console.error('Error fetching events:', error);
+      res.status(500).json({ error: 'Failed to fetch events' });
+    });
+});
+
 router.post('/create', async (req, res) => {
     //first do some checking to make sure we have everything we need
     console.log(req.body)
