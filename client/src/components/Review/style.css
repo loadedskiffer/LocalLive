@@ -1,50 +1,78 @@
-/* style.css */
-.PageContainer{
-    align-items: center;
-    background-color: #fff;
-    height: 100%;
+.PageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px; /* Adjust as needed */
+  margin: auto;
+  margin-top: 20px; /* Adjust as needed */
 }
+
 .reviewTable {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-  }
-  
-  .reviewTable th,
-  .reviewTable td {
-    padding: 8px;
-    border: 1px solid #ddd;
-    text-align: left;
-  }
-  
-  .reviewTable th {
-    background-color: #f2f2f2;
-  }
-  
-  .buttonGroup {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-    padding-right: 30px;
-  }
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
 
-  .addReviewForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center align the form content */
-    margin-top: 20px;
-  }
+.reviewTable th,
+.reviewTable td {
+  padding: 8px;
+  border: 1px solid #ddd;
+  text-align: left;
+  background-color: rgba(255, 255, 255, 0.9); /* Slightly more opaque for content */
+}
 
-  .addReviewButton {
-    display: flex;
-    justify-content: center; /* Center align the button horizontally */
-    margin-top: 20px; /* Adjust margin as needed */
-  }
+.reviewTable th {
+  background-color: rgba(242, 242, 242, 0.9); /* Semi-transparent header */
+}
 
-  .textAreaReview {
-    width: 100%; /* Set width to 80% of the container */
-    height: 200px; /* Set a larger height */
-    resize: vertical; /* Allow vertical resizing */
-    margin-bottom: 15px; /* Adjust margin as needed */
-  }
+.buttonGroup {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding-right: 30px;
+}
+
+.addReviewForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center align the form content */
+  margin-top: 20px;
+}
+
+.addReviewButton button {
+  width: auto; /* Adjust width automatically based on content */
+  padding: 10px 20px; /* Add more padding for a larger button */
+  font-size: 18px; /* Increase font size for better readability */
+  background-color: #007bff; /* Bootstrap primary color, or choose your own */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center; /* Ensure text is centered */
+  display: inline-block; /* Display as inline-block for proper padding */
+  margin: 0; /* Reset margin */
+}
+
+.addReviewButton button:hover {
+  background-color: #0056b3; /* Darker shade for hover state */
+}
+
+
+.textAreaReview {
+  width: calc(100% - 30px); /* Subtract padding */
+  height: 200px; /* Set a larger height */
+  resize: vertical; /* Allow vertical resizing */
+  margin-bottom: 15px; /* Adjust margin as needed */
+  padding: 15px; /* Padding inside the textarea */
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 4px; /* Rounded corners */
+  background-color: #fafafa; /* Slightly off-white background */
+}
