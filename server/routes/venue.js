@@ -17,6 +17,19 @@ router.get('/all', (req, res) => {
   });
 })
 
+//get names of all venue names for search functionality
+router.get('/all/locations', (req, res) => {
+  db.get().collection('Venues').find({}).toArray()
+    .then((venues) => {
+    coordinates = []
+    venues.forEach(element => {
+      coordinates.push([ parseFloat(element['xcoor']), parseFloat(element['ycoor'])])
+    });
+    console.log(coordinates)
+    res.status(200).json(coordinates);
+  });
+})
+
 router.post('/create', async (req, res) => {
     //first do some checking to make sure we have everything we need
     console.log(req.body)
