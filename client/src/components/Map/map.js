@@ -10,7 +10,7 @@ const MapContainer = () => {
 
   const fetchEvents = async () => {
     try {
-      const response = await fetch('/api/events/all'); // Adjust the endpoint as needed
+      const response = await fetch('http://localhost:5000/venue/all/locations'); // Adjust the endpoint as needed
       const data = await response.json();
       setEvents(data);
     } catch (error) {
@@ -36,10 +36,12 @@ const MapContainer = () => {
       >
         {events.map(event => (
           <Marker 
-            key={event._id} // Assuming each event has a unique _id
-            position={{ lat: event.latitude, lng: event.longitude }} // Adjust according to your event data structure
+            key={event[0]} // Assuming each event has a unique _id
+            position={{ lat: event[0], lng: event[1] }} // Adjust according to your event data structure
+            label={"LL"}
           />
         ))}
+       
       </GoogleMap>
     </LoadScript>
   );
