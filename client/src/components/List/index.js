@@ -57,6 +57,8 @@ const EventList = ({ onTitleClick, onEventClick }) => {
 
   return (    
     <View style={styles.container}>
+       <h1 style={{color: "black"}}> Upcoming Events</h1>
+       <div style={{ borderTop: "2px solid #fff ", marginLeft: 20, marginRight: 20 }}></div>
         {showModal && selectedEvent && (
           <div>
             <Event event={selectedEvent} closeModal={closeModal} />
@@ -83,6 +85,7 @@ const EventList = ({ onTitleClick, onEventClick }) => {
             {selectedVenue && (
               <Profile venueData={selectedVenue} closeModal={() => setSelectedVenue(null)} />
             )}
+             <div style={{ borderTop: "2px solid #fff ", marginLeft: 20, marginRight: 20 }}></div>
         </div>
       ))}
 
