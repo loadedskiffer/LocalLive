@@ -25,7 +25,7 @@ const authAudience = asyncHandler(async (req, res) => {
 // @route   POST /api/audience
 // @access  Public
 const registerAudience = asyncHandler(async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, zipcode } = req.body;
   const userExists = await Audience.findOne({ email });
   if (userExists) {
     res.status(400);
@@ -34,6 +34,7 @@ const registerAudience = asyncHandler(async (req, res) => {
   const user = await Audience.create({
     email,
     password,
+    zipcode
   });
   if (user) {
     generateToken(res, user._id);
@@ -67,6 +68,7 @@ const getAudienceProfile = asyncHandler(async (req, res) => {
     res.json({
       _id: user._id,
       email: user.email,
+      zipcode: user.zipcode
     });
   } else {
     res.status(404);

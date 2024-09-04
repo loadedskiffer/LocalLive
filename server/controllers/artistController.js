@@ -26,7 +26,7 @@ const authArtist = asyncHandler(async (req, res) => {
 // @route   POST /api/artist
 // @access  Public
 const registerArtist = asyncHandler(async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, zipcode} = req.body;
   const userExists = await Artist.findOne({ email });
   if (userExists) {
     res.status(400);
@@ -36,6 +36,7 @@ const registerArtist = asyncHandler(async (req, res) => {
     name,
     email,
     password,
+    zipcode
   });
   if (user) {
     generateToken(res, user._id);
@@ -43,6 +44,7 @@ const registerArtist = asyncHandler(async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
+      zipcode: user.zipcode
     });
   } else {
     res.status(400);
@@ -71,6 +73,7 @@ const getArtistProfile = asyncHandler(async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
+      zipcode: user.zipcode
     });
   } else {
     res.status(404);

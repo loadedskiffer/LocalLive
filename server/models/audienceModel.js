@@ -1,5 +1,9 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
+import Venue from './venueModel.js';
+import Artist from './artistModel.js';
+import Event from './eventModel.js';
+import { Schema } from 'mongoose';
 
 const audienceSchema = mongoose.Schema(
   {
@@ -11,6 +15,29 @@ const audienceSchema = mongoose.Schema(
     password: {
       type: String,
       required: true,
+    },
+    zipcode: {
+      type: Number,
+      required: true,
+    },
+    genres: {
+      type: String,
+      default: ""
+    },
+    followedVenues: {
+      type: [Schema.Types.ObjectId],
+      ref: "Venue",
+      default: []
+    },
+    followedArtists: {
+      type: [Schema.Types.ObjectId],
+      ref: "Artist",
+      default: []
+    },
+    savedEvents: {
+      type: [Schema.Types.ObjectId],
+      ref: "Event",
+      default: []
     },
   },
   {

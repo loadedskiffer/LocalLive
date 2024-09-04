@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
+import Event from './eventModel.js';
+import { Schema } from 'mongoose';
 
 const artistSchema = mongoose.Schema(
   {
@@ -16,6 +18,30 @@ const artistSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    zipcode: {
+      type: Number,
+      required: true,
+    },
+    radius: Number,
+    links: [String],
+    pastEvents: {
+      type: [Schema.Types.ObjectId],
+      ref: "Event"
+    },
+    upcomingEvents: {
+      type: [Schema.Types.ObjectId],
+      ref: "Event"
+    },
+    eventBids: {
+      type: [Schema.Types.ObjectId],
+      ref: "Event"
+    },
+    genres: [String],
+    images: [String],
+    videos: [String],
+    availability: [Date],
+    bookingFee: Number,
+    aboutMe: String,
   },
   {
     timestamps: true,

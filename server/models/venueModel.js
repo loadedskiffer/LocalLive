@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
+import Event from './eventModel.js';
+import { Schema } from 'mongoose';
 
 const venueSchema = mongoose.Schema(
   {
@@ -16,6 +18,31 @@ const venueSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    address: {
+      street: String,
+      city: String,
+      state: String,
+      zipcode: Number,
+    },
+    followers: Number,
+    eventSaves: Number,
+    links: [String],
+    pastEvents: {
+      type: [Schema.Types.ObjectId],
+      ref: "Event"
+    },
+    upcomingEvents: {
+      type: [Schema.Types.ObjectId],
+      ref: "Event"
+    },
+    pendingEvents: {
+      type: [Schema.Types.ObjectId],
+      ref: "Event"
+    },
+    genres: [String],
+    images: [String],
+    videos: [String],
+    aboutMe: String,
   },
   {
     timestamps: true,

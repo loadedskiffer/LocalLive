@@ -26,7 +26,7 @@ const authVenue = asyncHandler(async (req, res) => {
 // @route   POST /api/Venue
 // @access  Public
 const registerVenue = asyncHandler(async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, address } = req.body;
   const userExists = await Venue.findOne({ email });
   if (userExists) {
     res.status(400);
@@ -36,6 +36,7 @@ const registerVenue = asyncHandler(async (req, res) => {
     name,
     email,
     password,
+    address
   });
   if (user) {
     generateToken(res, user._id);
@@ -71,6 +72,7 @@ const getVenueProfile = asyncHandler(async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
+      address: user.address
     });
   } else {
     res.status(404);
