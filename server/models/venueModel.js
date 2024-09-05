@@ -22,7 +22,7 @@ const venueSchema = mongoose.Schema(
       street: String,
       city: String,
       state: String,
-      zipcode: Number,
+      zipcode: String,
     },
     followers: Number,
     eventSaves: Number,

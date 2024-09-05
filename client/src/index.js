@@ -13,6 +13,7 @@ import ProfileScreen from './pages/ProfileScreen';
 import ArtistHome from './pages/Artist/ArtistHome';
 import AudienceHome from './pages/Audience/AudienceHome';
 import VenueHome from './pages/Venue/VenueHome';
+import CreateEvent from './pages/Venue/CreateEvent';
 import store from './store';
 import PrivateRoute from './components/PrivateRoute';
 import { Provider } from 'react-redux';
@@ -27,6 +28,7 @@ const router = createBrowserRouter(
       <Route path='/artist/artist-home' element={<ArtistHome/>}/>
       <Route path='/audience/audience-home' element={<AudienceHome/>}/>
       <Route path='/venue/venue-home' element={<VenueHome/>}/>
+      <Route path='/venue/create-event' element={<CreateEvent/>}/>
       <Route path='' element={<PrivateRoute/>}>
         <Route path='/profile' element={<ProfileScreen/>}/>
       </Route>

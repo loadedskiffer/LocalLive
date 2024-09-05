@@ -30,7 +30,14 @@ export const venueApiSlice = apiSlice.injectEndpoints({
                 body: data
             })
         }),
+        createEvent: builder.mutation({
+            query: (data) => ({
+                url: `${VENUE_URL}/events`,
+                method: 'POST',
+                body: data
+            })
+        }),
     })
 })
 
-export const { useLoginVenueMutation, useLogoutVenueMutation, useRegisterVenueMutation, useUpdateVenueMutation} = venueApiSlice;
+export const { useLoginVenueMutation, useLogoutVenueMutation, useRegisterVenueMutation, useUpdateVenueMutation, useCreateEventMutation} = venueApiSlice;

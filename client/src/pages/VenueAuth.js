@@ -61,24 +61,61 @@ const RegisterForm = ({ onSwitchForm, onSubmit, formData, setFormData }) => (
       <Form.Group className='my-2' controlId='name'>
         <Form.Control
           type='name'
-          placeholder='Enter name'
+          placeholder='enter venue name'
           value={formData.name}
           onChange={(e) =>  setFormData({ ...formData, name: e.target.value })}
         ></Form.Control>
       </Form.Group>
+
       <Form.Group className='my-2' controlId='email'>
         <Form.Control
           type='email'
-          placeholder='Enter email'
+          placeholder='enter email'
           value={formData.email}
           onChange={(e) =>  setFormData({ ...formData, email: e.target.value })}
+        ></Form.Control>
+      </Form.Group>
+
+      <Form.Group className='my-2' controlId='street'>
+        <Form.Control
+          type='input'
+          placeholder='street'
+          value={formData.address.street}
+          onChange={(e) =>  setFormData({...formData, address: {...formData.address, street: e.target.value}})}
+        ></Form.Control>
+      </Form.Group>
+
+      <Form.Group className='my-2' controlId='city'>
+        <Form.Control
+          type='input'
+          placeholder='city'
+          value={formData.address.city}
+          onChange={(e) =>  setFormData({...formData, address: {...formData.address, city: e.target.value}})}
+        ></Form.Control>
+      </Form.Group>
+
+      <Form.Group className='my-2' controlId='state'>
+        <Form.Control
+          type='input'
+          placeholder='state'
+          value={formData.address.state}
+          onChange={(e) =>  setFormData({...formData, address: {...formData.address, state: e.target.value}})}
+        ></Form.Control>
+      </Form.Group>
+
+      <Form.Group className='my-2' controlId='zipcode'>
+        <Form.Control
+          type='input'
+          placeholder='zipcode'
+          value={formData.address.zipcode}
+          onChange={(e) =>  setFormData({...formData, address: {...formData.address, zipcode: e.target.value}})}
         ></Form.Control>
       </Form.Group>
 
       <Form.Group className='my-2' controlId='password'>
         <Form.Control
           type='password'
-          placeholder='Enter password'
+          placeholder='enter password'
           value={formData.password}
           onChange={(e) => setFormData({ ...formData, password: e.target.value })}
         ></Form.Control>
@@ -116,7 +153,7 @@ const RegisterForm = ({ onSwitchForm, onSubmit, formData, setFormData }) => (
 
 const VenueAuth = () => {
   const [isLogin, setIsLogin] = useState(true); // Initial state to show login form
-  const [formData, setFormData] = useState({name:'', email: '', password: '' , confirmPassword: ''});
+  const [formData, setFormData] = useState({name:'', email: '', password: '' , confirmPassword: '', address: {street: '', city: '', state: '', zipcode: ''}});
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -161,7 +198,7 @@ const VenueAuth = () => {
 
   const toggleForm = () => {
     setIsLogin((prevIsLogin) => !prevIsLogin);
-    setFormData({ email: '', password: '', confirmPassword: '', name: ''}); // Clear form data on switch
+    setFormData({ email: '', password: '', confirmPassword: '', name: '', address: {street: '', city: '', state: '', zipcode: ''}}); // Clear form data on switch
   };
 
   return (

@@ -19,10 +19,13 @@ const artistSchema = mongoose.Schema(
       required: true,
     },
     zipcode: {
-      type: Number,
+      type: String,
       required: true,
     },
-    radius: Number,
+    radius: {
+      type: Number,
+      default: 100
+    },
     links: [String],
     pastEvents: {
       type: [Schema.Types.ObjectId],

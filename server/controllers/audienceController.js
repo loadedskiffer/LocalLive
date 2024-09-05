@@ -41,6 +41,7 @@ const registerAudience = asyncHandler(async (req, res) => {
     res.status(201).json({
       _id: user._id,
       email: user.email,
+      zipcode: user.zipcode
     });
   } else {
     res.status(400);

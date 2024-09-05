@@ -1,5 +1,7 @@
 import asyncHandler from 'express-async-handler';
 import Venue from '../models/venueModel.js';
+import Event from '../models/eventModel.js';
+import Artist from '../models/artistModel.js';
 import generateToken from '../utils/generateToken.js';
 
 // @desc    Auth user & get token
@@ -102,10 +104,43 @@ const updateVenueProfile = asyncHandler(async (req, res) => {
     throw new Error('User not found');
   }
 });
+
+const createEvent = asyncHandler(async (req, res) => {
+  const { name, artist, date, time, needsTickets, creator, venue, pending, jointEvent } = req.body;
+  const artistId = await Artist.findOne({ name: artist });
+  const eventExists = await Event.findOne({ name });
+  if (eventExists) {
+    res.status(400);
+    throw new Error('already created an event with this name');
+  }
+  const event = await Event.create({
+    name,
+    date,
+    time,
+    creator,
+    artist: artistId,
+    venue,
+    needsTickets,
+    pending,
+    jointEvent
+  });
+  if (event) {
+    //add this event to venues array
+    res.status(201).json({
+      success: true
+    });
+  } else {
+    res.status(400);
+    throw new Error('Invalid event data');
+  }
+});
+
+
 export {
   authVenue,
   registerVenue,
   logoutVenue,
   getVenueProfile,
   updateVenueProfile,
+  createEvent
 };

@@ -61,7 +61,7 @@ const RegisterForm = ({ onSwitchForm, onSubmit, formData, setFormData }) => (
       <Form.Group className='my-2' controlId='email'>
         <Form.Control
           type='email'
-          placeholder='Enter email'
+          placeholder='enter email'
           value={formData.email}
           onChange={(e) =>  setFormData({ ...formData, email: e.target.value })}
         ></Form.Control>
@@ -70,7 +70,7 @@ const RegisterForm = ({ onSwitchForm, onSubmit, formData, setFormData }) => (
       <Form.Group className='my-2' controlId='password'>
         <Form.Control
           type='password'
-          placeholder='Enter password'
+          placeholder='enter password'
           value={formData.password}
           onChange={(e) => setFormData({ ...formData, password: e.target.value })}
         ></Form.Control>
@@ -82,6 +82,14 @@ const RegisterForm = ({ onSwitchForm, onSubmit, formData, setFormData }) => (
           placeholder='confirm password'
           value={formData.confirmPassword}
           onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
+        ></Form.Control>
+      </Form.Group>
+      <Form.Group className='my-2' controlId='zipcode'>
+        <Form.Control
+          type='input'
+          placeholder='zip code'
+          value={formData.zipcode}
+          onChange={(e) => setFormData({ ...formData, zipcode: e.target.value })}
         ></Form.Control>
       </Form.Group>
       <Row className='py-3'>
@@ -108,7 +116,7 @@ const RegisterForm = ({ onSwitchForm, onSubmit, formData, setFormData }) => (
 
 const AudienceAuth = () => {
   const [isLogin, setIsLogin] = useState(true); // Initial state to show login form
-  const [formData, setFormData] = useState({email: '', password: '' , confirmPassword: ''});
+  const [formData, setFormData] = useState({email: '', password: '' , confirmPassword: '', zipcode: ''});
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -153,7 +161,7 @@ const AudienceAuth = () => {
 
   const toggleForm = () => {
     setIsLogin((prevIsLogin) => !prevIsLogin);
-    setFormData({ email: '', password: '', confirmPassword: ''}); // Clear form data on switch
+    setFormData({ email: '', password: '', confirmPassword: '', zipcode: ''}); // Clear form data on switch
   };
 
   return (

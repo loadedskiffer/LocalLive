@@ -13,6 +13,10 @@ const eventSchema = mongoose.Schema(
         type: Date,
         required: true
     },
+    time: {
+      type: String,
+      required: true
+    },
     creator : {
         type: String,
         required: true
