@@ -6,6 +6,7 @@ import {
   logoutAudience,
   getAudienceProfile,
   updateAudienceProfile,
+  getAudienceEvents,
 } from '../controllers/audienceController.js';
 import { protect } from '../middleware/authMiddleware.js';
 
@@ -14,6 +15,7 @@ const router = express.Router();
 router.post('/', registerAudience);
 router.post('/auth', authAudience);
 router.post('/logout', logoutAudience);
+router.get('/events', getAudienceEvents);
 router
   .route('/profile')
   .get(protect, getAudienceProfile)

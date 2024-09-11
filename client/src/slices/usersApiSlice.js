@@ -30,7 +30,13 @@ export const userApiSlice = apiSlice.injectEndpoints({
                 body: data
             })
         }),
+        getEvents: builder.mutation({
+            query: () => ({
+                url: `${AUDIENCE_URL}/events`,
+                method: 'GET',
+            })
+        }),
     })
 })
 
-export const { useLoginMutation, useLogoutMutation, useRegisterMutation, useUpdateUserMutation} = userApiSlice;
+export const { useLoginMutation, useLogoutMutation, useRegisterMutation, useUpdateUserMutation, useGetEventsMutation} = userApiSlice;

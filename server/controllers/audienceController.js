@@ -1,5 +1,6 @@
 import asyncHandler from 'express-async-handler';
 import Audience from '../models/audienceModel.js';
+import Event from '../models/eventModel.js';
 import generateToken from '../utils/generateToken.js';
 
 // @desc    Auth user & get token
@@ -97,10 +98,27 @@ const updateAudienceProfile = asyncHandler(async (req, res) => {
     throw new Error('User not found');
   }
 });
+
+
+// @desc    Get events for audience
+// @route   GET /api/users/events
+// @access  Private
+const getAudienceEvents = asyncHandler(async (req, res) => {
+  const allEvents = await Event.find({});
+  if (allEvents) {
+    res.json(allEvents);
+  } else {
+    res.status(404);
+    throw new Error('error fetching events');
+  }
+});
+
+
 export {
   authAudience,
   registerAudience,
   logoutAudience,
   getAudienceProfile,
   updateAudienceProfile,
+  getAudienceEvents
 };
