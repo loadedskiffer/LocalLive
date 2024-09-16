@@ -11,3 +11,5 @@ Install Instructions:
 - plop that .env file right into your server directory and you're good to go
 - run `npm run start` in both server and client and the app should load up for ya
 
+- super useful video to help you figure out whats going on https://www.youtube.com/watch?v=R4AhvYORZRY&ab_channel=TraversyMedia
+
