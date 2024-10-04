@@ -4,7 +4,7 @@ Its gonna be real cool someday
 - Create a website for communities to come together through music
 - Allows performers, venues and audience members to connect
 - Displays events to users that are occurring in the local area
-- 
+  
 ## Stack
 - MERN
 
