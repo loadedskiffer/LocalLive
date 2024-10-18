@@ -1,4 +1,12 @@
 .eventContainer {
     width: 33%;
     float: right;
+    color: black;
+    background-color: #f1f1f1;
+    border: 6px solid black;
+    border-radius: 10px;
+    justify-content: center;
+    display: flex; 
+    flex-wrap: wrap; 
+    padding: 20px; 
 }
