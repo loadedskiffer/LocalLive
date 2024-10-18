@@ -1,4 +1,5 @@
 import { Container, Row, Col } from 'react-bootstrap';
+import "../css/EventCard.css"
 import EventCard from './EventCard';
 
 
