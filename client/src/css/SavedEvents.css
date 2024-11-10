@@ -1,0 +1,10 @@
+.saved-events-page {
+    padding: 20px;
+    margin-top: 100px; /* Adjust to avoid overlap with any fixed header */
+    text-align: center;
+}
+
+.saved-events-page h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}

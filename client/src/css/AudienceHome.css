@@ -10,3 +10,49 @@
     flex-wrap: wrap; 
     padding: 20px; 
 }
+
+
+/* BANNER */
+.banner {
+    width: 100vw;               
+    background-color: #4A90E2;   
+    color: white;
+    padding: 50px 0;
+    text-align: center;
+    margin: 0;                   
+    position: relative;
+    top: 0;
+    left: 50%;
+    right: 50%;
+    z-index: 1000; 
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+
+.banner-text {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+
+/* SAVED EVENTS BUTTON */
+.button-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.saved-events-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.saved-events-button:hover {
+    background-color: #45a049;
+}
+
+
