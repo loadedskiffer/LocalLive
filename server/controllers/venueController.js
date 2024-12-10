@@ -135,6 +135,38 @@ const createEvent = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    Edit an event
+// @route   PUT /api/venue/events/:eventId
+// @access  Private
+const editEvent = asyncHandler(async (req, res) => {
+  const { eventId } = req.params;
+  const { name, date, time, artist, venue, needsTickets, pending, jointEvent } = req.body;
+
+  const event = await Event.findById(eventId);
+
+  if (!event) {
+    res.status(404);
+    throw new Error('Event not found');
+  }
+
+  // Update the event fields
+  event.name = name || event.name;
+  event.date = date || event.date;
+  event.time = time || event.time;
+  event.artist = artist || event.artist;
+  event.venue = venue || event.venue;
+  event.needsTickets = needsTickets || event.needsTickets;
+  event.pending = pending || event.pending;
+  event.jointEvent = jointEvent || event.jointEvent;
+
+  const updatedEvent = await event.save();
+
+  res.json({
+    success: true,
+    event: updatedEvent,
+  });
+});
+
 
 export {
   authVenue,
@@ -142,5 +174,6 @@ export {
   logoutVenue,
   getVenueProfile,
   updateVenueProfile,
-  createEvent
+  createEvent,
+  editEvent
 };
