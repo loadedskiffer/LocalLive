@@ -18,3 +18,16 @@ Its gonna be real cool someday
 - run `npm run start` in both server and client and the app should load up for ya
 
 - super useful video to help you figure out whats going on https://www.youtube.com/watch?v=R4AhvYORZRY&ab_channel=TraversyMedia
+
+## Running Server
+- Open 2 terminals
+  - CD into /server
+    - run command "npm run start"
+    - can end process by using command "ctrl c" and typing "y"
+  - CD into /client
+    - run command "npm run start"
+    - can end process by using command "ctrl c" and typing "y"
+
+- "Client" server can be found on http://localhost:3000/
+  - This is where you can view the website
+- "Server" server can be found on http://localhost:500/
