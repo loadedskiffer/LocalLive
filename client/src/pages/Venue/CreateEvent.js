@@ -9,7 +9,8 @@ import { useCreateEventMutation } from '../../slices/venuesApiSlice.js';
 const CreateEvent = () => {
     const { userInfo } = useSelector((state) => state.auth);
     const venueId = userInfo._id;
-    const [formData, setFormData] = useState({name:'', date: '', time: '', creator: 'v', venue: venueId, artist: '' , needTickets: false, pending: false, jointEvent: false});
+    const creatorEmail = userInfo.email;
+    const [formData, setFormData] = useState({name:'', date: '', time: '', creator: creatorEmail, venue: venueId, artist: '' , needTickets: false, pending: false, jointEvent: false});
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [create] = useCreateEventMutation();
