@@ -1,10 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import bannerImage from '../../Pictures/concert1.jpg';
+import '../../css/ArtistHome.css';
 
 const ArtistHome = () => {
   return (
     <div>
-      <h1>Artist Home</h1>
+      {/* Banner Section */}
+      <div className="banner" style={{ backgroundImage: `url(${bannerImage})` }}>
+                <h1 className="banner-text">Welcome to Artist Home</h1>
+            </div>
 
       {/* View Artist List Button */}
       <Link to="/artist-list">
