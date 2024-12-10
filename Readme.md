@@ -30,4 +30,4 @@ Its gonna be real cool someday
 
 - "Client" server can be found on http://localhost:3000/
   - This is where you can view the website
-- "Server" server can be found on http://localhost:500/
+- "Server" server can be found on http://localhost:5000/
