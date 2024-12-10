@@ -44,9 +44,9 @@ Its gonna be real cool someday
 - Create 2 pages that you want to connect
 - Create a button on one page with format:
 
-<Link to="/artist-list">
-        <button>View Artist List</button>
-</Link>
+\<Link to="/artist-list"\>
+        \<button\>View Artist List\</button\>
+\</Link\>
 
 - Open index.js file in /client/src
 
