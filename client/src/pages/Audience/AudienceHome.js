@@ -41,11 +41,9 @@ const AudienceHome = () => {
             </div>
 
             {/* Button for Saved Events */}
-            <div className="button-container">
-                <button className="saved-events-button" onClick={handleSavedEventsClick}>
-                    Saved Events
-                </button>
-            </div>
+            <Link to="/saved-events">
+                <button>Saved Events</button>
+            </Link>
 
             {/* Events Section */}
             <div className="eventWrapper">

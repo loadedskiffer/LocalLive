@@ -78,7 +78,7 @@ const VenueHome = () => {
                                     {/* Event details here */}
                                     <h3>{event.name}</h3>
                                     {/* Edit Event Button */}
-                                    <LinkContainer to={`/venue/edit-event/${event._id}`}>
+                                    <LinkContainer to={`/edit-event`}>
                                         <Button className="edit-event-btn">
                                             Edit Event
                                         </Button>
