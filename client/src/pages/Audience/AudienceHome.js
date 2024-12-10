@@ -34,7 +34,7 @@ const AudienceHome = () => {
     };
 
     return (
-        <div>
+        <div className="container">
             {/* Banner Section */}
             <div className="banner" style={{ backgroundImage: `url(${bannerImage})` }}>
                 <h1 className="banner-text">Welcome to Audience Home</h1>
@@ -48,14 +48,17 @@ const AudienceHome = () => {
             </div>
 
             {/* Events Section */}
-            <div className="eventContainer">
-                {loading ? (
-                    <p>Loading events...</p>
-                ) : error ? (
-                    <p>{error}</p>
-                ) : (
-                    <EventContainer events={allEvents} />
-                )}
+            <div className="eventWrapper">
+                <div className="left-container">
+                    <h2>Your Events</h2>
+                    {loading ? (
+                        <p>Loading events...</p>
+                    ) : error ? (
+                        <p>{error}</p>
+                    ) : (
+                        <EventContainer events={allEvents} />
+                    )}
+                </div>
             </div>
         </div>
     );
