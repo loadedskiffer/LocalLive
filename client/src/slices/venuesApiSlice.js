@@ -37,6 +37,13 @@ export const venueApiSlice = apiSlice.injectEndpoints({
                 body: data
             })
         }),
+
+        getEvents: builder.query({
+            query: () => ({
+                url: `${VENUE_URL}/events`,
+                method: 'GET',
+            }),
+        }),
     })
 })
 
