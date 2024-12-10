@@ -95,3 +95,17 @@ button.retry:hover {
     background-color: #c9302c;
 }
 
+/* Edit Event Button */
+.edit-event-btn {
+    background-color: #4CAF50;  /* Same color as other buttons */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.edit-event-btn:hover {
+    background-color: #45a049;  /* Hover effect to match other buttons */
+}

@@ -6,7 +6,8 @@ import {
   logoutVenue,
   getVenueProfile,
   updateVenueProfile,
-  createEvent
+  createEvent,
+  editEvent
 } from '../controllers/venueController.js';
 import { protect } from '../middleware/authMiddleware.js';
 
@@ -15,14 +16,11 @@ const router = express.Router();
 router.post('/', registerVenue);
 router.post('/auth', authVenue);
 router.post('/logout', logoutVenue);
+
 router
   .route('/profile')
   .get(protect, getVenueProfile)
   .put(protect, updateVenueProfile);
 
-router 
-  .route('/events')
-  // .get(protect, getEvents)
-  .post(protect, createEvent)
 
 export default router;

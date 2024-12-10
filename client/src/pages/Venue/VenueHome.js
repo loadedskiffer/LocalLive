@@ -4,7 +4,6 @@ import EventContainer from "../../components/EventContainer";
 import '../../css/VenueHome.css';
 import { useGetEventsMutation } from '../../slices/usersApiSlice';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import bannerImage from '../../Pictures/concert1.jpg';
 
@@ -13,7 +12,9 @@ const VenueHome = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [getEvents] = useGetEventsMutation();
-    const navigate = useNavigate();
+    
+    const { userInfo } = useSelector((state) => state.auth); // Access user info from Redux
+    const venueId = userInfo._id; 
 
     const fetchData = async () => {
         setLoading(true);
@@ -32,10 +33,6 @@ const VenueHome = () => {
     useEffect(() => {
         fetchData();
     }, [getEvents]);
-
-    // Assuming userInfo._id is the venue's ID, which is passed as a prop or accessed from state
-    const { userInfo } = useSelector((state) => state.auth); // Access user info from Redux
-    const venueId = userInfo._id; // Replace this with the actual venue ID logic
 
     // Filter events based on venueId
     const yourEvents = allEvents.filter(event => event.venue === venueId);
@@ -60,7 +57,9 @@ const VenueHome = () => {
             <div className="eventWrapper">
                 {/* Your Events */}
                 <div className="left-container">
-                    <h2>Your Events</h2>
+                    <div className="header-container">
+                        <h2>Your Events</h2>
+                    </div>
                     {loading ? (
                         <div className="spinner-container">
                             <Spinner animation="border" role="status">
@@ -73,7 +72,20 @@ const VenueHome = () => {
                             <Button onClick={fetchData} variant="danger">Retry</Button>
                         </div>
                     ) : (
-                        <EventContainer events={yourEvents} />
+                        <div>
+                            {yourEvents.map(event => (
+                                <div key={event._id} className="event-item">
+                                    {/* Event details here */}
+                                    <h3>{event.name}</h3>
+                                    {/* Edit Event Button */}
+                                    <LinkContainer to={`/venue/edit-event/${event._id}`}>
+                                        <Button className="edit-event-btn">
+                                            Edit Event
+                                        </Button>
+                                    </LinkContainer>
+                                </div>
+                            ))}
+                        </div>
                     )}
                 </div>
 
