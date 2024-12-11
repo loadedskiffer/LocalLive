@@ -45,7 +45,7 @@ Its gonna be real cool someday
 - Create a button on one page with format:
 
 \<Link to="/artist-list"\>
-        \<button\>View Artist List\</button\>
+\<button\>View Artist List\</button\>
 \</Link\>
 
 - Open index.js file in /client/src
@@ -55,3 +55,22 @@ Its gonna be real cool someday
 
   - create the logic for the route in the file below like:
     <Route path='/artist-list' element={<ArtistList/>} />
+
+  ## Navigating the File Structure
+
+  -Broken up into Client and Server folders
+  -Client handles frontend while Server handles backend
+
+  -Client
+
+  - Most files are found in src folder
+  - Code for webpages is split based on account type
+  - Components, CSS, and Slices are all found in their respective pages
+  - index.js contains code for client side routing
+  - all the neccessary build components and node modules are within the foler
+
+  -Server
+
+  - Split up into Controllers, Middleware, Models, and Routes
+  - These are again split up based on account type
+  - The utils folder also contains code neccessary to some functions
