@@ -152,5 +152,6 @@ export {
   logoutAudience,
   getAudienceProfile,
   updateAudienceProfile,
-  getAudienceEvents
+  getAudienceEvents,
+  saveEvent
 };

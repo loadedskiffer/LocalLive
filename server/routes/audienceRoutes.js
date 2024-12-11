@@ -7,6 +7,7 @@ import {
   getAudienceProfile,
   updateAudienceProfile,
   getAudienceEvents,
+  saveEvent,
   /*getSavedAudienceEvents,*/
 } from '../controllers/audienceController.js';
 import { protect } from '../middleware/authMiddleware.js';
@@ -17,7 +18,7 @@ router.post('/', registerAudience);
 router.post('/auth', authAudience);
 router.post('/logout', logoutAudience);
 router.get('/events', getAudienceEvents);
-router.post('/saved-events', protect, saveEvent);
+router.post('/saved-events', saveEvent);
 /*router.get('/events/saved', getSavedAudienceEvents);*/
 router
   .route('/profile')

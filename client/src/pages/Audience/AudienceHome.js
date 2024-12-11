@@ -51,10 +51,18 @@ const AudienceHome = () => {
                 <h1 className="banner-text">Welcome to Audience Home</h1>
             </div>
     
-            {/* Button for Saved Events */}
-            <Link to="/saved-events">
-                <button className="saved-events-button">Saved Events</button>
-            </Link>
+             {/* Navigation Buttons */}
+             <div className="navigation-buttons">
+                <Link to="/venue-list">
+                    <button>Venue List</button>
+                </Link>
+                <Link to="/artist-list">
+                    <button>Artist List</button>
+                </Link>
+                <Link to="/saved-events">
+                    <button>Saved Events</button>
+                </Link>
+            </div>
     
             {/* Events Section */}
             <div className="eventWrapper">
