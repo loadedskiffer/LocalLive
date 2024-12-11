@@ -145,6 +145,32 @@ const saveEvent = async (req, res) => {
   }
 };
 
+// @desc    Get list of artists
+// @route   GET /api/artists
+// @access  Public
+const getArtists = asyncHandler(async (req, res) => {
+  const artists = await Artist.find({});
+  if (artists) {
+    res.json(artists);
+  } else {
+    res.status(404);
+    throw new Error('No artists found');
+  }
+});
+
+// @desc    Get list of venues
+// @route   GET /api/venues
+// @access  Public
+const getVenues = asyncHandler(async (req, res) => {
+  const venues = await Venue.find({});
+  if (venues) {
+    res.json(venues);
+  } else {
+    res.status(404);
+    throw new Error('No venues found');
+  }
+});
+
 
 export {
   authAudience,
@@ -153,5 +179,7 @@ export {
   getAudienceProfile,
   updateAudienceProfile,
   getAudienceEvents,
-  saveEvent
+  saveEvent,
+  getArtists,
+  getVenues
 };
