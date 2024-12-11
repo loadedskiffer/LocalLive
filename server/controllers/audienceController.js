@@ -113,6 +113,38 @@ const getAudienceEvents = asyncHandler(async (req, res) => {
   }
 });
 
+const saveEvent = async (req, res) => {
+  const { eventId } = req.body;
+  const audienceId = req.user.id; // Assume you have audience ID from authentication middleware.
+
+  try {
+      const audience = await Audience.findById(audienceId);
+      if (!audience) {
+          return res.status(404).json({ message: "Audience not found" });
+      }
+
+      // Check if the event is already saved
+      if (audience.savedEvents.includes(eventId)) {
+          return res.status(400).json({ message: "Event already saved" });
+      }
+
+      // Validate if the event exists
+      const event = await Event.findById(eventId);
+      if (!event) {
+          return res.status(404).json({ message: "Event not found" });
+      }
+
+      // Add the event to the savedEvents array
+      audience.savedEvents.push(eventId);
+      await audience.save();
+
+      res.status(200).json({ message: "Event saved successfully", savedEvents: audience.savedEvents });
+  } catch (error) {
+      console.error("Error saving event:", error);
+      res.status(500).json({ message: "Server error" });
+  }
+};
+
 
 export {
   authAudience,

@@ -17,6 +17,7 @@ router.post('/', registerAudience);
 router.post('/auth', authAudience);
 router.post('/logout', logoutAudience);
 router.get('/events', getAudienceEvents);
+router.post('/saved-events', protect, saveEvent);
 /*router.get('/events/saved', getSavedAudienceEvents);*/
 router
   .route('/profile')
