@@ -1,5 +1,5 @@
 import { Container, Row, Col } from 'react-bootstrap';
-import "../css/VenueCard.css"; // Assuming you'll have venue-specific styling
+import "../css/VenueCard.css"; 
 import VenueCard from './VenueCard'; // Component for individual venue cards
 
 const VenueContainer = (venues) => {

@@ -53,6 +53,15 @@ const VenueHome = () => {
                 </LinkContainer>
             </div>
 
+            {/* Button for Venue Artist List */}
+            <div className="button-container">
+                <LinkContainer to="/artist-list">
+                    <Button className="artist-list-btn">
+                        Venue Artist List
+                    </Button>
+                </LinkContainer>
+            </div>
+
             {/* Event Wrapper for Left and Right Side Containers */}
             <div className="eventWrapper">
                 {/* Your Events */}

@@ -22,6 +22,9 @@ import SavedEvents from './pages/Audience/AudienceSavedEvents';
 import EditEvent from './pages/Venue/EditEvent';
 import ArtistCreateEvent from './pages/Artist/ArtistCreateEvent';
 import AudienceVenueList from './pages/Audience/AudienceVenueList';
+import AudienceArtistList from './pages/Audience/AudienceArtistList';
+import VenueArtistList from './pages/Venue/VenueArtistList';
+import ArtistEvents from './pages/Artist/ArtistEvent';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -39,6 +42,9 @@ const router = createBrowserRouter(
       <Route path='/saved-events' element = {<SavedEvents/>}/>
       <Route path='/edit-event' element = {<EditEvent/>}/>
       <Route path ='/venue-list' element = {<AudienceVenueList/>}/>
+      <Route path ='/artist-list' element = {<AudienceArtistList/>}/>
+      <Route path ='/artist-list' element = {<VenueArtistList/>}/>
+      <Route path ='/artist-list' element = {<ArtistEvents/>}/>
       <Route path='' element={<PrivateRoute/>}>
         <Route path='/profile' element={<ProfileScreen/>}/>
       </Route>
