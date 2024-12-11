@@ -1,35 +1,36 @@
 import React, { useEffect, useState } from 'react';
-import VenueContainer from '../../components/VenueContainer'; // Make sure this is the VenueContainer component
+import ArtistContainer from '../../components/ArtistContainer';
 import { Spinner, Button } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
 
-const AudienceVenueList = () => {
-  const [venues, setVenues] = useState([]);
+const AudienceArtistList = () => {
+  const [artists, setArtists] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fetch venues from the API
-  const fetchVenues = async () => {
+  // Fetch artists from the API
+  const fetchArtists = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('/api/venues');  // Update to the actual API endpoint for venues
-      setVenues(response.data);
+      const response = await axios.get('/api/artists');  // Update to the actual API endpoint
+      setArtists(response.data);
       setError(null);
     } catch (err) {
-      console.error('Error fetching venues:', err);
-      setError('Failed to load venues. Please try again.');
+      console.error('Error fetching artists:', err);
+      setError('Failed to load artists. Please try again.');
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchVenues();
+    fetchArtists();
   }, []);
 
   return (
     <div>
-      <h1>Venue List</h1>
+      <h1>Artist List</h1>
       
       {loading ? (
         <div className="spinner-container">
@@ -40,13 +41,13 @@ const AudienceVenueList = () => {
       ) : error ? (
         <div>
           <p>{error}</p>
-          <Button onClick={fetchVenues} variant="danger">Retry</Button>
+          <Button onClick={fetchArtists} variant="danger">Retry</Button>
         </div>
       ) : (
-        <VenueContainer venues={venues} />
+        <ArtistContainer artists={artists} />
       )}
     </div>
   );
 };
 
-export default AudienceVenueList;
+export default AudienceArtistList;

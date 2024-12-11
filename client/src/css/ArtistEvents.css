@@ -1,0 +1,42 @@
+/* ArtistEvents.css */
+.banner {
+    height: 300px;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+  
+  .banner-text {
+    font-size: 3rem;
+    font-weight: bold;
+  }
+  
+  .create-event-btn {
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+  
+  .eventWrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  
+  .left-container {
+    width: 48%;
+  }
+  
+  .spinner-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
+  
+  .header-container h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  

@@ -19,6 +19,8 @@ router.post('/auth', authAudience);
 router.post('/logout', logoutAudience);
 router.get('/events', getAudienceEvents);
 router.post('/saved-events', saveEvent);
+router.get('/artists', getArtists);
+router.get('/venues', getVenues);
 /*router.get('/events/saved', getSavedAudienceEvents);*/
 router
   .route('/profile')

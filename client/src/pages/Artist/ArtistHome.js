@@ -8,8 +8,13 @@ const ArtistHome = () => {
     <div>
       {/* Banner Section */}
       <div className="banner" style={{ backgroundImage: `url(${bannerImage})` }}>
-                <h1 className="banner-text">Welcome to Artist Home</h1>
-            </div>
+        <h1 className="banner-text">Welcome to Artist Home</h1>
+      </div>
+
+      {/* View Artist Events Button */}
+      <Link to="/artist-events">
+        <button>View Your Events</button>
+      </Link>
 
       {/* View Artist List Button */}
       <Link to="/artist-list">
